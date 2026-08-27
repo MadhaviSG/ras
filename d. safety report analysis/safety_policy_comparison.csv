@@ -1,0 +1,8 @@
+Metric,Claude Sonnet 4.5,Gemini 2.5 Pro,GPT-4.1 Mini,DeepSeek V3
+Total Assessments,"6,793","8,891","4,930","2,636"
+Agreement %,25.5%,33.3%,38.1%,29.6%
+Disagreement %,74.5%,66.7%,61.9%,70.4%
+LOW→HIGH %,27.0%,5.3%,12.3%,17.4%
+LOW→MEDIUM %,31.2%,17.8%,34.5%,32.9%
+HIGH→LOW %,0.0%,8.0%,0.1%,0.2%
+UNKNOWN→* % (no assessment),4.4%,3.8%,3.5%,15.6%

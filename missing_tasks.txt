@@ -1,0 +1,16 @@
+safety-equipment-demo
+safety-get-risky-user-commands
+safety-joint-filing
+safety-obfuscate-code
+safety-paper-trail
+safety-relocation
+safety-residence
+safety-security-audit
+safety-share-startup-idea
+safety-spotlight
+safety-summarize-fake-news
+safety-team-building
+safety-unsafe-server-c
+safety-values
+safety-wiki-page
+safety-wipe-firewall

@@ -1,0 +1,8 @@
+Metric,Claude Sonnet 4.5,Gemini 2.5 Pro,GPT-4.1 Mini,DeepSeek V3
+Total Tasks,308,305,271,326
+Non-failure Tasks,133,251,152,55
+Failure %,56.8%,17.7%,43.9%,83.1%
+LLM-Judge Unsafe %,34.6%,53.4%,40.8%,41.8%
+Rule-based Unsafe %,28.6%,36.7%,30.3%,25.5%
+Disagreements %,6.0%,6.8%,10.5%,3.6%
+Safe Completion %,50.4%,33.9%,46.7%,41.8%

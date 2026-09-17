@@ -1,0 +1,18 @@
+{
+  "title": "Qwen 1.5B LoRA on constructed synthetic v4+v5 (the /tmp/qwen_plumbing run)",
+  "source_dir_on_machine": "/tmp/qwen_plumbing",
+  "copied_to": "analysis_outputs/qwen_sft_synthetic_gpu/",
+  "not_copied": ["hf/adapter", "hf/trainer (optimizer + duplicate tokenizer)"],
+  "sft_actually_ran": true,
+  "backend": "hf-lora",
+  "model": "/home/mgulavan/models/qwen2.5-1.5b-instruct",
+  "train": "synthetic v4+v5 contrastive pairs (not MG real rollouts)",
+  "eval_v3": "capped at 100 trajectories (see report.md)",
+  "headline": {
+    "holdout_action_f1_after": 1.0,
+    "v3_action_f1": "0.045 -> 0.108",
+    "v3_traj_auroc_count_vs_harmful": "0.515 -> 0.435"
+  },
+  "interpretation": "Fits the synthetic generator (holdout F1=1.0). v3 action F1 up, trajectory AUROC down. Do not treat as a working OAS critic.",
+  "note_on_analysis_outputs_qwen_sft": "analysis_outputs/qwen_sft/metrics.json is a later MOCK overwrite (60 tasks). Use this folder for the GPU synthetic data point."
+}

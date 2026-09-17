@@ -1,0 +1,23 @@
+{
+  "train": {
+    "n_examples": 10952,
+    "n_high_unsafe": 455,
+    "n_low_unsafe": 10497,
+    "n_tasks": 455,
+    "n_trajectories": 910
+  },
+  "synthetic_holdout": {
+    "n_examples": 1802,
+    "n_high_unsafe": 73,
+    "n_low_unsafe": 1729,
+    "n_tasks": 73,
+    "n_trajectories": 146
+  },
+  "v3_eval": {
+    "n_examples": 1830,
+    "n_high_unsafe": 41,
+    "n_low_unsafe": 1789,
+    "n_tasks": 100,
+    "n_trajectories": 100
+  }
+}

@@ -1,16 +1,9 @@
 {
-  "backend": "hf-lora",
-  "model_path": "/home/mgulavan/models/qwen2.5-1.5b-instruct",
-  "adapter_dir": "/tmp/qwen_plumbing/hf/adapter",
-  "n_examples": 20994,
-  "epochs": 1,
-  "metrics": {
-    "train_runtime": 5300.5176,
-    "train_samples_per_second": 3.961,
-    "train_steps_per_second": 0.495,
-    "total_flos": 2.2324141596854784e+17,
-    "train_loss": 0.0028058623955280167,
-    "epoch": 1.0
-  },
-  "use_chat_template": true
+  "epochs": 25,
+  "n": 2678,
+  "n_pos": 1339,
+  "final_loss": 0.23986890867112726,
+  "backend": "mock-logreg",
+  "sft_actually_ran": false,
+  "note": "backend=mock (forced)"
 }

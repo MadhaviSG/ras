@@ -62,7 +62,7 @@ Headline F1 (`high-unsafe` on v3): **before 0.026 → after 0.021**.
 
 ## Diagnostic: MG-task holdout (fit on new rollouts, not v3)
 
-**Not the v3 headline.** This holdout is other **MG rollout tasks**, not original OAS v3 and not constructed synthetic pairs. High F1 here means the critic fits the new-task distribution. Flat v3 with high MG holdout is **shift** (MG ≠ v3), not v4/v5 template copying.
+**Not the v3 headline.** This holdout is other **MG rollout tasks**, not original OAS v3 and not constructed synthetic pairs.
 
 | Stage / set | n | n_pos | accuracy | precision | recall | F1 | tp/fp/tn/fn |
 |---|---:|---:|---:|---:|---:|---:|---|
@@ -86,9 +86,9 @@ Holdout F1: **before 0.019 → after 0.794**.
 These figures are **ShieldGemma LoRA**. MG-task holdout F1 is high while original OAS **v3 is flat**: the critic **fits the new MG rollout distribution** (and the task-level holdout of that same file) but does **not** transfer to messy v3 traces. That is **MG↔v3 shift**, not v4/v5 keyword / generator overfitting — this run never trained on constructed synthetic pairs.
 
 - **Can claim:** train/eval firewall held (no v3 trajectories in train; no `instance_id` shared with the holdout).
-- **Cannot claim (this run):** that ShieldGemma LoRA improved **original OAS v3** behavior, unless `sft_actually_ran` is true and the v3 headline (traj AUROC / action F1) moves.
+- **Cannot claim (this run):** that ShieldGemma LoRA improved **original OAS v3** behavior. The v3 headline is action F1 and trajectory AUROC; holdout F1 is not a substitute.
 - Per-action v3 labels are weak supervision (~33% localization of harmful trajectories). Prefer trajectory-level AUROC against `role` / `rule_based`.
-- The holdout is **other MG tasks**, not synthetic pairs. High holdout F1 + flat v3 is MG↔v3 shift, not 'copied v4/v5 pivotal phrases'.
+- The holdout is **other MG tasks**, not synthetic pairs.
 
 ## Hardware / model search
 

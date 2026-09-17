@@ -1,0 +1,17 @@
+{
+  "cuda": true,
+  "torch_available": true,
+  "transformers_available": true,
+  "peft_available": true,
+  "bitsandbytes_available": false,
+  "model_path": "/home/mgulavan/models/qwen2.5-1.5b-instruct",
+  "model_id": "qwen2.5-1.5b-instruct",
+  "reason": "local Qwen at /home/mgulavan/models/qwen2.5-1.5b-instruct with CUDA",
+  "can_sft": true,
+  "backend": "hf",
+  "family": "qwen",
+  "notes": [
+    "cuda_device=NVIDIA RTX A6000",
+    "explicit path /home/mgulavan/models/qwen2.5-1.5b-instruct"
+  ]
+}

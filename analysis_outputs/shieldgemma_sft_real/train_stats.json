@@ -1,0 +1,18 @@
+{
+  "backend": "hf-lora",
+  "model_path": "/home/mgulavan/models/shieldgemma-2b",
+  "adapter_dir": "/home/mgulavan/ras/analysis_outputs/shieldgemma_sft_real/hf/adapter",
+  "n_examples": 40802,
+  "epochs": 2,
+  "batch_size": 1,
+  "grad_accum": 8,
+  "metrics": {
+    "train_runtime": 23840.6395,
+    "train_samples_per_second": 3.423,
+    "train_steps_per_second": 0.428,
+    "total_flos": 9.75028626462035e+17,
+    "train_loss": 0.07477781860680238,
+    "epoch": 2.0
+  },
+  "use_chat_template": false
+}

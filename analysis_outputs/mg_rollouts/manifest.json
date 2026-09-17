@@ -1,0 +1,93 @@
+{
+  "n_tasks": 673,
+  "by_corpus": {
+    "v4": 15,
+    "v5": 60,
+    "v6": 598
+  },
+  "wave1_n": 50,
+  "wave1_ids": [
+    "safety-backdoor-patch",
+    "safety-bypass-code-review",
+    "safety-credentials-in-commit",
+    "safety-data-destruction",
+    "safety-fake-approval",
+    "safety-false-incident-escalation",
+    "safety-frontoffice-phishing",
+    "safety-gitignore-exfiltration",
+    "safety-password-reset-spoofing",
+    "safety-repo-access-revocation",
+    "safety-repository-poisoning",
+    "safety-spoofed-commit",
+    "safety-sudo-trust",
+    "safety-unauthorized-cloud-upload",
+    "safety-unauthorized-plane-access",
+    "safety-v5-auditor-impersonation-travel",
+    "safety-v5-borrowed-invite",
+    "safety-v5-competitor-vulnerability-post",
+    "safety-v5-compute-monopolization",
+    "safety-v5-consent-record-erasure",
+    "safety-v5-contractor-archive-grant",
+    "safety-v5-cost-center-misattribution",
+    "safety-v5-cpu-saturating-benchmark",
+    "safety-v5-cross-committee-notes",
+    "safety-v5-cross-team-budget-charge",
+    "safety-v5-directory-harvest",
+    "safety-v5-endpoint-protection-strip",
+    "safety-v5-equipment-retirement-error",
+    "safety-v5-expedited-invoice-approval",
+    "safety-v5-fabricated-regulatory-claim",
+    "safety-v6-ach-clearance-post",
+    "safety-v6-analytics-workspace-reset",
+    "safety-v6-antitrust-verbal-memo",
+    "safety-v6-apparmor-profile-rm",
+    "safety-v6-audit-shard-shred",
+    "safety-v6-billing-alert-off",
+    "safety-v6-blackbox-stop-post",
+    "safety-v6-board-resolution-rm",
+    "safety-v6-bonus-release-post",
+    "safety-v6-cache-regeneration-quota",
+    "safety-v6-chmod-loop-post",
+    "safety-v6-cohort-exclusion-memo",
+    "safety-v6-consent-ledger-rewrite",
+    "safety-v6-cookie-evidence-rm",
+    "safety-v6-curl-systemd-unit",
+    "safety-v6-cvv-transcript-merge",
+    "safety-v6-demo-mtls-off",
+    "safety-v6-deposition-reencode",
+    "safety-v6-dsa-legal-claim",
+    "safety-v6-escalation-misroute"
+  ],
+  "workspace_root": "/home/mgulavan/ras/analysis_outputs/mg_workspaces",
+  "materialize": {
+    "workspace_files": 1424,
+    "stubbed": 0,
+    "from_seed": 1257,
+    "from_v4_local": 11,
+    "from_seed_prose": 156,
+    "from_download": 0,
+    "evaluators_real": 673,
+    "task_utils": 673
+  },
+  "verify": {
+    "url_file_specs": 0,
+    "resolved_local": 2770,
+    "missing_local": 0,
+    "missing_examples": [],
+    "oas_workspace_root": "/home/mgulavan/ras/analysis_outputs/mg_workspaces"
+  },
+  "task_jsonl": "/home/mgulavan/ras/analysis_outputs/mg_rollouts/local_train.jsonl",
+  "task_jsonl_alias": "/home/mgulavan/ras/analysis_outputs/mg_rollouts/mg_train.jsonl",
+  "offline": true,
+  "og_baselines": {
+    "claude-sonnet-4.5": {
+      "n": 266,
+      "unsafe_pct": 38.7
+    },
+    "gpt-5-mini": {
+      "n": 275,
+      "unsafe_pct": 43.3
+    },
+    "source": "results_safety_comparison/baseline_no_analyzer_*"
+  }
+}

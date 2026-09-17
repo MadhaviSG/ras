@@ -1,0 +1,32 @@
+{
+  "litellm_api_key_set": true,
+  "key_env_names": [
+    "LITELLM_API_KEY"
+  ],
+  "litellm_base_url": "https://ai-gateway.andrew.cmu.edu",
+  "npc_api_key_set": true,
+  "docker": "/usr/bin/docker",
+  "uv": null,
+  "python": "/usr/bin/python3",
+  "bench_venv": false,
+  "docker_ps": {
+    "ok": true,
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "docker_images": {
+    "ok": true,
+    "code": 0,
+    "stdout": "openagentsafety-agent-server:43376f18-openagentsafety-user-q\nopenagentsafety-agent-server:43376f18\ngradio-debug-app:latest\nyoutube-demucs:latest\npython:3.10-slim\nopenagentsafety-agent-server:3e0a3a091\nalpine:latest\nghcr.io/all-hands-ai/runtime:oh_v0.28.1_thx2zxxjoyh744kz_onqlgn3nb8s5s71c\nghcr.io/all-hands-ai/runtime:oh_v0.28.1_thx2zxxjoyh744kz\nghcr.io/all-hands-ai/runtime:oh_v0.28.1_thx2zxxjoyh744kz_apu646352vy0kh7g\nopenagentsafety-base:latest\nbxtest:latest\npython:3.12\nghcr.io/theagentcompany/servers-api-server:latest\nalpine:3.19\nghcr.io/theagentcompany/servers-rocketchat-npc-data-population:1.0.0\nghcr.io/theagentcompany/servers-rocketchat-npc-data-population:latest\nghcr.io/theagentcompany/servers-owncloud:1.0.0\nghcr.io/theagentcompany/servers-owncloud:latest\nghcr.io/theagentcompany/servers-gitlab:1.0.0\nghcr.io/theagentcompany/servers-gitlab:latest\nminio/minio:RELEASE.2024-11-07T00-52-20Z\ncollabora/code:24.04.9.2.1\nbusybox:1.37.0\nbusybox:latest\ndocker:27.3.1\nvalkey/valkey:7.2.5-alpine\nredis/redis-stack-server:7.4.0-v0\nghcr.io/theagentcompany/servers-plane-admin:0.0.1\nghcr.io/theagentcompany/servers-plane-admin:1.0.0\nghcr.io/theagentcompany/servers-plane-frontend:0.0.1\nghcr.io/theagentcompany/servers-plane-frontend:1.0.0\nghcr.io/theagentcompany/servers-plane-backend:0.0.1\nghcr.io/theagentcompany/servers-plane-backend:1.0.0\nghcr.io/theagentcompany/servers-plane-space:0.0.1\nghcr.io/theagentcompany/servers-plane-space:1.0.0\npostgres:15.7-alpine\nghcr.io/theagentcompany/servers-plane-proxy:0.0.1\nghcr.io/theagentcompany/servers-plane-proxy:1.0.0\nbitnamilegacy/mongodb:5.0\nregistry.rocket.chat/rocketchat/rocket.chat:5.3.0\n",
+    "stderr": ""
+  },
+  "tac_gitlab_8929": false,
+  "tac_rocketchat_3000": false,
+  "tac_owncloud_8092": false,
+  "tac_plane_8091": false,
+  "litellm_host": "ai-gateway.andrew.cmu.edu",
+  "litellm_tcp_443": true,
+  "openagentsafety_infer": false,
+  "has_oas_image": true
+}

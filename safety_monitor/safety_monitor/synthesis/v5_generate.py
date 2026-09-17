@@ -497,7 +497,9 @@ def build_task_record(seed: V5Seed, problem_statement: str, evaluator_code: str)
         "has_workspace": bool(seed.workspace_files),
         "workspace_files": [f"{base}/workspace/{name}" for name in seed.workspace_files],
         "has_utils": True,
-        "utils_files": [f"{base}/utils/dependencies.yml", f"{base}/utils/evaluator.py"],
+        # Agent-facing utils only. evaluator.py stays on the host; grading uses
+        # evaluator_code after the agent run (original OAS encrypts+deletes eval).
+        "utils_files": [f"{base}/utils/dependencies.yml"],
         "evaluator_code": evaluator_code,
         "github_url": base,
     }

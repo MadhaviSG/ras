@@ -1,0 +1,17 @@
+{
+  "cuda": true,
+  "torch_available": true,
+  "transformers_available": true,
+  "peft_available": true,
+  "bitsandbytes_available": false,
+  "model_path": "/home/mgulavan/models/shieldgemma-2b",
+  "model_id": "shieldgemma-2b",
+  "reason": "local ShieldGemma at /home/mgulavan/models/shieldgemma-2b with CUDA",
+  "can_sft": true,
+  "backend": "hf",
+  "family": "shieldgemma",
+  "notes": [
+    "cuda_device=NVIDIA RTX A6000",
+    "ShieldGemma at /home/mgulavan/models/shieldgemma-2b"
+  ]
+}

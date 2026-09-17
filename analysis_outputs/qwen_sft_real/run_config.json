@@ -1,0 +1,19 @@
+{
+  "command": "sft-run",
+  "train_paths": [
+    "/home/mgulavan/ras/analysis_outputs/real_rollout_sft/trajectories.jsonl"
+  ],
+  "eval_path": "/home/mgulavan/ras/analysis_outputs/critic_training_pairs/trajectories.jsonl",
+  "out_dir": "/home/mgulavan/ras/analysis_outputs/qwen_sft_real",
+  "backend": "hf",
+  "requested_backend": "hf",
+  "model_path": "/home/mgulavan/models/qwen2.5-1.5b-instruct",
+  "epochs": 2,
+  "batch_size": 8,
+  "grad_accum": 1,
+  "eval_batch_size": 1,
+  "holdout_fraction": 0.2,
+  "max_v3_trajectories": null,
+  "use_shipped_splits": false,
+  "strict": true
+}

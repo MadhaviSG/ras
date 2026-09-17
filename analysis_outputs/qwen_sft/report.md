@@ -1,33 +1,33 @@
 # Local Qwen SFT for the external safety critic
 
-Local Qwen LoRA SFT **did not run**. This machine has no GPU and no on-disk Qwen weights; the numbers below are from the CPU **mock** backend (keyword zero-shot vs hashed-ngram logistic regression) so the split and metrics pipeline is verified.
+Local Qwen LoRA SFT **completed**.
 
 ## Status
 
-- **SFT actually ran:** `False`
-- **Backend used:** `mock`
-- **GPU/CUDA:** `False`
-- **Torch / transformers / peft:** `False` / `False` / `False`
-- **Local Qwen path:** `None`
-- **Probe reason:** backend=mock (forced)
+- **SFT actually ran:** `True`
+- **Backend used:** `hf`
+- **GPU/CUDA:** `True`
+- **Torch / transformers / peft:** `True` / `True` / `True`
+- **Local Qwen path:** `/home/mgulavan/models/qwen2.5-1.5b-instruct`
+- **Probe reason:** local Qwen at /home/mgulavan/models/qwen2.5-1.5b-instruct with CUDA
 
 ## Train/eval firewall
 
 Training uses **synthetic v4 + v5** trajectories only. Real OAS v3 runs (`analysis_outputs/critic_training_pairs`) are eval-only. The synthetic holdout is a **task-level** (`instance_id`) cut: no step from a holdout task is in train. Holdout metrics are a leakage diagnostic ("can the model fit the generator?") and **must not** be treated as the headline number.
 
-- Train tasks: **60** (120 trajectories)
-- Synthetic holdout tasks: **15** (30 trajectories)
-- V3 eval trajectories: **2575** across 300 tasks
-- Split salt: `qwen-sft`, holdout fraction `0.2`
+- Train tasks: **455** (910 trajectories)
+- Synthetic holdout tasks: **73** (146 trajectories)
+- V3 eval trajectories: **100** across 100 tasks
+- Split salt: `v6-synthetic-500`, holdout fraction `0.0`
 - Train∩holdout instance_ids: `[]`
 
 ## Example counts (one SFT row per labeled action)
 
 | Split | Examples | high-unsafe | low-unsafe | tasks | trajectories |
 |---|---:|---:|---:|---:|---:|
-| train | 1399 | 60 | 1339 | 60 | 120 |
-| synthetic_holdout | 362 | 15 | 347 | 15 | 30 |
-| v3_eval | 24309 | 695 | 23614 | 300 | 2575 |
+| train | 10952 | 455 | 10497 | 455 | 910 |
+| synthetic_holdout | 1802 | 73 | 1729 | 73 | 146 |
+| v3_eval | 1830 | 41 | 1789 | 100 | 100 |
 
 ## Headline: v3 eval (weak per-action labels + trajectory GT)
 
@@ -37,28 +37,28 @@ Per-action labels on v3 are **weak supervision** (signature + sink + contrastive
 
 | Stage / set | n | n_pos | accuracy | precision | recall | F1 | tp/fp/tn/fn |
 |---|---:|---:|---:|---:|---:|---:|---|
-| before zero-shot | 24309 | 695 | 0.924 | 0.049 | 0.091 | 0.064 | 63/1226/22388/632 |
-| before few-shot | 24309 | 695 | 0.924 | 0.049 | 0.091 | 0.064 | 63/1226/22388/632 |
-| after SFT | 24309 | 695 | 0.433 | 0.024 | 0.479 | 0.046 | 333/13427/10187/362 |
+| before zero-shot | 1830 | 41 | 0.237 | 0.023 | 0.805 | 0.045 | 33/1389/400/8 |
+| before few-shot | 1830 | 41 | 0.645 | 0.025 | 0.390 | 0.047 | 16/625/1164/25 |
+| after SFT | 1830 | 41 | 0.928 | 0.075 | 0.195 | 0.108 | 8/99/1690/33 |
 
-Headline F1 (`high-unsafe` on v3): **before 0.064 → after 0.046**.
+Headline F1 (`high-unsafe` on v3): **before 0.045 → after 0.108**.
 
 ### Trajectory-level (does critic mass predict `role==harmful` / rule-based?)
 
 | Stage | aggregate | n | Pearson | Spearman | AUROC |
 |---|---|---:|---:|---:|---:|
-| before zero-shot / count_vs_harmful | 2575 | 0.018 | 0.008 | 0.503 |
-| before zero-shot / rate_vs_harmful | 2575 | -0.005 | 0.005 | 0.502 |
-| before zero-shot / max_vs_harmful | 2575 | 0.006 | 0.006 | 0.503 |
-| before zero-shot / count_vs_rule | 2575 | 0.018 | 0.008 | 0.503 |
-| before few-shot / count_vs_harmful | 2575 | 0.018 | 0.008 | 0.503 |
-| before few-shot / rate_vs_harmful | 2575 | -0.005 | 0.005 | 0.502 |
-| before few-shot / max_vs_harmful | 2575 | 0.006 | 0.006 | 0.503 |
-| before few-shot / count_vs_rule | 2575 | 0.018 | 0.008 | 0.503 |
-| after SFT / count_vs_harmful | 2575 | 0.037 | 0.080 | 0.546 |
-| after SFT / rate_vs_harmful | 2575 | 0.075 | 0.079 | 0.545 |
-| after SFT / max_vs_harmful | 2575 | 0.083 | 0.083 | 0.543 |
-| after SFT / count_vs_rule | 2575 | 0.037 | 0.080 | 0.546 |
+| before zero-shot / count_vs_harmful | 100 | -0.001 | 0.026 | 0.515 |
+| before zero-shot / rate_vs_harmful | 100 | -0.127 | -0.064 | 0.463 |
+| before zero-shot / max_vs_harmful | 100 | n/a | n/a | 0.500 |
+| before zero-shot / count_vs_rule | 100 | -0.001 | 0.026 | 0.515 |
+| before few-shot / count_vs_harmful | 100 | -0.055 | -0.103 | 0.440 |
+| before few-shot / rate_vs_harmful | 100 | -0.260 | -0.261 | 0.348 |
+| before few-shot / max_vs_harmful | 100 | -0.121 | -0.121 | 0.451 |
+| before few-shot / count_vs_rule | 100 | -0.055 | -0.103 | 0.440 |
+| after SFT / count_vs_harmful | 100 | -0.157 | -0.120 | 0.435 |
+| after SFT / rate_vs_harmful | 100 | -0.138 | -0.111 | 0.439 |
+| after SFT / max_vs_harmful | 100 | -0.113 | -0.113 | 0.443 |
+| after SFT / count_vs_rule | 100 | -0.157 | -0.120 | 0.435 |
 
 ## Diagnostic only: synthetic holdout (can the model fit the generator?)
 
@@ -66,24 +66,24 @@ Headline F1 (`high-unsafe` on v3): **before 0.064 → after 0.046**.
 
 | Stage / set | n | n_pos | accuracy | precision | recall | F1 | tp/fp/tn/fn |
 |---|---:|---:|---:|---:|---:|---:|---|
-| before zero-shot | 362 | 15 | 0.942 | 0.200 | 0.133 | 0.160 | 2/8/339/13 |
-| after SFT | 362 | 15 | 0.572 | 0.088 | 1.000 | 0.162 | 15/155/192/0 |
-| after SFT on *train* (overfit check) | 1399 | 60 | 0.602 | 0.095 | 0.967 | 0.172 | 58/555/784/2 |
+| before zero-shot | 1802 | 73 | 0.145 | 0.045 | 1.000 | 0.087 | 73/1541/188/0 |
+| after SFT | 1802 | 73 | 1.000 | 1.000 | 1.000 | 1.000 | 73/0/1729/0 |
+| after SFT on *train* (overfit check) | 10952 | 455 | 0.998 | 0.964 | 1.000 | 0.982 | 455/17/10480/0 |
 
-Synthetic-holdout F1: **before 0.160 → after 0.162**.
+Synthetic-holdout F1: **before 0.087 → after 1.000**.
 
 ### Trajectory-level on synthetic holdout
 
 | Stage | aggregate | n | Pearson | Spearman | AUROC |
 |---|---|---:|---:|---:|---:|
-| before zero-shot / count_vs_harmful | 30 | 0.000 | 0.000 | 0.500 |
-| before zero-shot / count_vs_rule | 30 | 0.000 | 0.000 | 0.500 |
-| after SFT / count_vs_harmful | 30 | 0.000 | 0.000 | 0.500 |
-| after SFT / count_vs_rule | 30 | 0.000 | 0.000 | 0.500 |
+| before zero-shot / count_vs_harmful | 146 | 0.300 | 0.282 | 0.662 |
+| before zero-shot / count_vs_rule | 146 | 0.300 | 0.282 | 0.662 |
+| after SFT / count_vs_harmful | 146 | 1.000 | 1.000 | 1.000 |
+| after SFT / count_vs_rule | 146 | 1.000 | 1.000 | 1.000 |
 
 ## What this can and cannot claim
 
-These figures are the **mock** backend, not Qwen. Treat them as a pipeline check and a qualitative template-overfit warning. Mock few-shot equals mock zero-shot (the keyword completer ignores demonstrations). After the fit, **recall of `high-unsafe` rose while precision and accuracy collapsed** (over-flagging). That is the other failure mode of fitting synthetic prefixes: shared exploration/NPC text is treated as unsafe, so both halves of a contrastive pair light up and trajectory AUROC stays near chance. Synthetic-holdout F1 staying low means the stand-in did **not** even cleanly fit the generator — do not read a v3 F1 bump (or drop) as Qwen SFT.
+These figures are **Qwen LoRA**. v3 action F1 moved up after the fit. Still treat per-action v3 labels as weak supervision and confirm the trajectory-level AUROC against `role==harmful` / rule-based score before claiming critic gains.
 
 - **Can claim:** the conversion, task-level split, and metric code ran on the real corpora with a train/eval firewall (no v3 in train; no `instance_id` shared with the synthetic holdout).
 - **Cannot claim (this run):** that a Qwen critic improved on real OAS behavior, unless `sft_actually_ran` is true and the v3 headline moves.
@@ -95,7 +95,8 @@ These figures are the **mock** backend, not Qwen. Treat them as a pipeline check
 Searched HuggingFace cache (`~/.cache/huggingface/hub`), `/models`, `$QWEN_MODEL_PATH`. No extra weights were downloaded (disk ~full; constraint: local Qwen only, no LiteLLM / cmu.litellm.ai / Ollama proxy).
 
 Probe notes:
-- no Qwen weights on disk (huggingface cache / /models)
+- cuda_device=NVIDIA RTX A6000
+- explicit path /home/mgulavan/models/qwen2.5-1.5b-instruct
 
 ## Exact command to rerun
 

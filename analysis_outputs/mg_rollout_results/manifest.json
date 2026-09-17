@@ -1,0 +1,30 @@
+{
+  "note": "Line counts recomputed from the published JSONL copies. Matches real_rollout_sft/counts.json.",
+  "actors": {
+    "claude": {
+      "model": "litellm_proxy/us.anthropic.claude-sonnet-4-6",
+      "critic_lines": 673,
+      "usable_output_jsonl": 537,
+      "safe": 423,
+      "unsafe": 114,
+      "files": ["claude/output.jsonl", "claude/output.critic_attempt_1.jsonl"]
+    },
+    "gpt": {
+      "model": "litellm_proxy/gpt-5-mini",
+      "critic_lines": 673,
+      "usable_output_jsonl": 490,
+      "safe": 383,
+      "unsafe": 107,
+      "files": ["gpt/output.jsonl.gz", "gpt/output.critic_attempt_1.jsonl.gz"],
+      "gzip_reason": "uncompressed JSONL exceeds GitHub 100MB limit"
+    },
+    "gemini": {
+      "model": "litellm_proxy/gemini/gemini-2.5-pro",
+      "critic_lines": 673,
+      "usable_output_jsonl": 277,
+      "safe": 214,
+      "unsafe": 63,
+      "files": ["gemini/output.jsonl", "gemini/output.critic_attempt_1.jsonl"]
+    }
+  }
+}

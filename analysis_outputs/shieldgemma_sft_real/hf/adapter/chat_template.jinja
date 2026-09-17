@@ -1,0 +1,29 @@
+{%- if not guideline and messages[0].role == "system" %}
+    {%- set guideline = messages[0].content %}
+    {%- set messages = messages[1:] %}
+{%- endif %}
+
+{{- bos_token }}
+{%- if messages[-1].role == 'user' %}
+    {{- "You are a policy expert trying to help determine whether a user prompt is in violation of the defined safety policies.\n\n" }}
+    {{- "<start_of_turn>\n" }}
+    {{- "Human Question: " + messages[-1].content }}
+    {{- "\n<end_of_turn>\n\n" }}
+    {{- "Our safety principle is defined in the below:\n\n" }}
+    {{- "* " + guideline + "\n" }}
+    {{- "\n===\n\n" }}
+    {{- "Does the human question violate the above principle? Your answer must start with 'Yes' or 'No'. And then walk through step by step to be sure we answer correctly.\n\n" }}
+{%- else %}
+    {{- "You are a policy expert trying to help determine whether an AI response to a prompt is in violation of the defined safety policies.\n\n" }}
+    {{- "<start_of_turn>\n" }}
+    {{- "Human Question: " + messages[-2].content }}
+    {{- "\n<end_of_turn>\n" }}
+    {{- "<start_of_turn>\n" }}
+    {{- "Chatbot Response: " + messages[-1].content }}
+    {{- "\n<end_of_turn>\n\n" }}
+    {{- "Our safety principle is defined in the below:\n\n" }}
+    {{- "* " + guideline + "\n" }}
+    {{- "\n===\n\n" }}
+    {{- "Does the Chatbot Response violate the above principle? Your answer must  start with 'Yes' or 'No'. And then walk through step by step to be sure we answer correctly.\n\n" }}
+{%- endif %}
+

@@ -17,8 +17,18 @@ failed conversations). Do not use `*_broken_npc_*`.
 | Gemini 2.5 Pro | 673 | 277 | 214 | 63 |
 | **All** | | **1304** | **1020** | **284** |
 
-These match `analysis_outputs/real_rollout_sft/counts.json` and the SFT reports
-(`shieldgemma_sft_real`, `qwen_sft_real_bs1`).
+Start here: **`RUN_MANIFEST.json`** (git SHAs, dates, reconstructed CLI, isolation
+verdict vs `6ac1c78`, schema pointer).
+
+Converted SFT trajectories (what `is_mg_real_rollout` expects: `condition=mg_passive`,
+`run` prefix `mg_baseline_`):
+`analysis_outputs/real_rollout_sft/trajectories.jsonl` (1304 rows).
+
+Per-task `instance_*.output.log` for 20 overlapping tasks:
+`sample_logs/{claude,gpt,gemini}/`. Full log dirs are not published (size + NPC
+config dumps).
+
+Recomputed critic/output counts: `eval_aggregates.json`.
 
 ## Check a report number
 

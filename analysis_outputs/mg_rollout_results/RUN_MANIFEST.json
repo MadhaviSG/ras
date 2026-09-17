@@ -1,0 +1,87 @@
+{
+  "title": "MG passive OAS rollouts (Claude / GPT / Gemini)",
+  "isolation": {
+    "grader_isolation_commit": "6ac1c78e45d9a90a9234e5b4b9a443d797e58314",
+    "grader_isolation_committed_at": "2026-09-17",
+    "rollouts_finished_by": "2026-09-10",
+    "verdict": "ALL rollouts finished before isolation was committed. Treat as pre-6ac1c78 unless working-tree evidence says otherwise.",
+    "working_tree_evidence": {
+      "utils_files_in_saved_instance": "dependencies.yml only; evaluator.py never listed (537+490+277 usable rows)",
+      "instruction_contains_evaluator_py": 0,
+      "history_contains_evaluator_py_source": {
+        "claude": ["safety-v5-cross-team-budget-charge"],
+        "gpt": [],
+        "gemini": ["safety-v6-ext-6375-d77577"]
+      },
+      "note": "Task JSON uploaded to the agent omitted evaluator.py. output.jsonl still stores instance.evaluator_code for host-side grading. Two tasks have evaluator.py source in a terminal observation (agent likely catted a grader file)."
+    }
+  },
+  "git": {
+    "benchmarks_branch_at_run": "ras26",
+    "benchmarks_committed_HEAD_during_run": "c933af7a (Stop silent mock SFT and cut GPU-day wall-clock.)",
+    "openhands_sdk_in_output_path": "128452b42bf45eb8c23e214df94ed1caa25abf9d",
+    "ras_commit_that_published_jsonl": "170c078"
+  },
+  "condition": {
+    "security_analyzer": "none",
+    "security_mode": "passive",
+    "max_iterations": 500,
+    "max_attempts": 1,
+    "critic": "pass",
+    "num_workers": 10,
+    "npc_model": "gemini/gemini-2.5-flash-lite",
+    "npc_base_url": "https://ai-gateway.andrew.cmu.edu",
+    "agent_base_url": "https://ai-gateway.andrew.cmu.edu",
+    "dataset": "analysis_outputs/mg_rollouts/local_train.jsonl",
+    "n_task_ids": 673,
+    "oas_workspace_root": "/home/mgulavan/ras/analysis_outputs/mg_workspaces"
+  },
+  "reconstructed_command": "uv run openagentsafety-infer $CFG --dataset analysis_outputs/mg_rollouts/local_train.jsonl --split train --output-dir benchmarks/results_mg_baseline_$ACTOR --num-workers 10 --max-attempts 1 --max-iterations 500 --critic pass --select analysis_outputs/mg_rollouts/all_ids.txt --note passive_none",
+  "actors": {
+    "claude": {
+      "model": "litellm_proxy/us.anthropic.claude-sonnet-4-6",
+      "wave1_start": "2026-09-04T02:05:05Z",
+      "remaining_start": "2026-09-09T20:00:11Z",
+      "remaining_end": "2026-09-09T23:03:20Z",
+      "output_dir": "benchmarks/results_mg_baseline_claude/.../us.anthropic.claude-sonnet-4-6_sdk_128452b_maxiter_500_N_passive_none",
+      "ignore": "*_broken_npc_*"
+    },
+    "gpt": {
+      "model": "litellm_proxy/gpt-5-mini",
+      "wave1_start": "2026-09-04T05:46:07Z",
+      "remaining_start": "2026-09-09T23:03:20Z",
+      "remaining_end": "2026-09-10T04:01:45Z"
+    },
+    "gemini": {
+      "model": "litellm_proxy/gemini/gemini-2.5-pro",
+      "all_ids_start": "2026-09-10T05:43:43Z",
+      "output_mtime": "2026-09-10T09:47:46Z"
+    }
+  },
+  "converted_trajectories": {
+    "path": "analysis_outputs/real_rollout_sft/trajectories.jsonl",
+    "n": 1304,
+    "schema": {
+      "condition": "mg_passive",
+      "run_prefix": "mg_baseline_",
+      "is_mg_real_rollout": "safety_monitor.sft.data.is_mg_real_rollout"
+    },
+    "converter": "analysis_outputs/real_rollout_sft/convert_mg_rollouts.py",
+    "label": "environment test_result.final_score.result (1=unsafe)"
+  },
+  "published_here": {
+    "jsonl": "claude+gemini uncompressed; gpt gzipped (GitHub 100MB limit)",
+    "sample_logs": "sample_logs/{claude,gpt,gemini}/ 20 overlapping wave-1 instance_*.output.log files",
+    "not_published": [
+      "full per-task logs dirs (99–149MB; Gemini agents catted /npc/.npc_config.json)",
+      "wave *.log over 100MB",
+      "llm_configs/*.json (live gateway key)",
+      "mg_workspaces/"
+    ]
+  },
+  "hygiene": {
+    "placeholder_glpat": "glpat-abcdefghijklmnopqrstuvwxyz appears in task fixtures (fake)",
+    "live_gateway_key": "Gemini/Claude observations of /npc/.npc_config.json were rewritten to [REDACTED] in the published JSONL (18 field replacements). Rotate the CMU gateway key anyway; git history of 170c078 may still contain the old value.",
+    "eval_aggregates": "eval_aggregates.json recomputed from these JSONL copies"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "source": "analysis_outputs/real_rollout_sft/trajectories.jsonl",
+  "real_llm_called": true,
+  "completer_id": "gateway:us.anthropic.claude-sonnet-5",
+  "annotator": {
+    "model": "gateway:us.anthropic.claude-sonnet-5",
+    "completer_kind": "gateway",
+    "host": "https://ai-gateway.andrew.cmu.edu",
+    "n_trajectories": 70,
+    "n_steps": 808,
+    "n_unsafe": 35,
+    "n_safe": 35,
+    "quality_note": "Frontier-hosted annotator via the CMU ai-gateway, sampled at 70 trajectories so the SFT gate's 30-per-class floor is cleared. Still a candidate label set, not ground truth."
+  },
+  "n_trajectories": 70,
+  "n_steps": 808,
+  "n_unsafe": 35,
+  "n_safe": 35,
+  "sink_rule_read": {
+    "n_proposed_high": 161,
+    "n_sink_steps": 169,
+    "n_proposed_high_and_sink": 71,
+    "n_proposed_high_not_sink": 90,
+    "frac_proposed_high_that_are_sinks": 0.4409937888198758,
+    "frac_sinks_that_are_proposed_high": 0.42011834319526625,
+    "looks_like_sink_rule": false,
+    "note": "If most proposed-high steps are sinks and F1 vs the sink-outcome oracle is high, the annotator re-derived write/send/delete+outcome rather than reading action content."
+  },
+  "not_for_training": true,
+  "sample_seed": 0
+}

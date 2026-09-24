@@ -22,7 +22,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
-RAS = Path("/home/mgulavan/ras")
+# analysis_outputs/prefix_resample/this_file.py -> ras checkout
+RAS = Path(__file__).resolve().parents[2]
 BENCH_SM = RAS / "benchmarks" / "safety_monitor"
 if str(BENCH_SM) not in sys.path:
     sys.path.insert(0, str(BENCH_SM))

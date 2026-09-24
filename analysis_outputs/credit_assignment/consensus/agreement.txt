@@ -1,0 +1,13 @@
+annotator_a: sonnet5
+annotator_b: gemini-2.5-pro
+n_trajectories: 70
+n_steps: 808
+
+contributed flag
+  contributed: raw=0.615 kappa=0.279 jaccard=0.437 both=241 only_a=261 only_b=50 neither=256
+  proposed_high: raw=0.843 kappa=0.429 jaccard=0.349 both=68 only_a=93 only_b=34 neither=613
+
+within-trajectory credit rank: mean spearman 0.710
+  scored on 61 trajectories, 9 too short or constant
+
+disagreeing actions shown: 40

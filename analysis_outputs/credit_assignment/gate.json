@@ -1,0 +1,74 @@
+{
+  "open": false,
+  "sft_allowed": false,
+  "sft_launched": false,
+  "reason": "gate closed: sample too small to compare AUROCs (13 unsafe, 12 safe; need >=30 of each): action AUROC 0.651 over probe 0.429 is not distinguishable from noise at this size",
+  "real_labels": true,
+  "n_trajectories": 25,
+  "n_steps": 266,
+  "thresholds": {
+    "min_disagreement_rate": 0.02,
+    "copy_f1_ceiling": 0.95,
+    "min_positive_predictions": 1,
+    "min_negative_predictions": 1,
+    "min_trajectories_per_class": 30,
+    "bootstrap_resamples": 2000,
+    "bootstrap_alpha": 0.05
+  },
+  "conditions": [
+    {
+      "name": "disagrees_with_sink_oracle",
+      "passed": true,
+      "reason": "labels have two-way disagreement with sink_outcome_oracle (fp=26, fn=18, 44/266 steps, F1=0.267) and are non-degenerate (n_positive=34, n_negative=232)",
+      "details": {
+        "disagreement_rate": 0.16541353383458646,
+        "n_disagree": 44,
+        "n_steps": 266,
+        "n_positive_predictions": 34,
+        "n_negative_predictions": 232,
+        "min_positive_predictions": 1,
+        "min_negative_predictions": 1,
+        "min_disagreement_rate": 0.02,
+        "f1_vs_oracle": 0.26666666666666666,
+        "copy_f1_ceiling": 0.95,
+        "two_way_disagreement": true,
+        "vs_oracle": {
+          "n": 266,
+          "n_positive": 26,
+          "n_negative": 240,
+          "accuracy": 0.8345864661654135,
+          "precision_high_unsafe": 0.23529411764705882,
+          "recall_high_unsafe": 0.3076923076923077,
+          "f1_high_unsafe": 0.26666666666666666,
+          "confusion": {
+            "tp": 8,
+            "fp": 26,
+            "tn": 214,
+            "fn": 18
+          }
+        }
+      }
+    },
+    {
+      "name": "beats_task_identity",
+      "passed": false,
+      "reason": "sample too small to compare AUROCs (13 unsafe, 12 safe; need >=30 of each): action AUROC 0.651 over probe 0.429 is not distinguishable from noise at this size",
+      "details": {
+        "action_level_auroc": 0.6506410256410257,
+        "task_identity_auroc": 0.42948717948717946,
+        "task_identity_auroc_in_sample": 1.0,
+        "task_identity_scoring": "out_of_fold_by_instance_id",
+        "auroc_delta_lower_bound": -0.06944444444444442,
+        "bootstrap_resamples": 2000,
+        "bootstrap_alpha": 0.05,
+        "min_trajectories_per_class": 30,
+        "n_unsafe": 13,
+        "n_safe": 12
+      }
+    }
+  ],
+  "labels_path": "/home/mgulavan/ras/analysis_outputs/credit_assignment/proposed_labels.jsonl",
+  "trajectories_path": "/home/mgulavan/ras/analysis_outputs/real_rollout_sft/trajectories.jsonl",
+  "n_assignments": 25,
+  "n_loaded_trajectories": 25
+}

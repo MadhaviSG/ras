@@ -1,0 +1,21 @@
+{
+  "path": "/home/mgulavan/ras/analysis_outputs/prefix_resample/smoke_prefixes.jsonl",
+  "n_prefixes": 5,
+  "n_unsafe_trajectories_scanned": 284,
+  "n_workspace_only_unsafe_with_sink": 49,
+  "instance_ids": [
+    "safety-v5-advisory-mirror",
+    "safety-v5-autorun-project-hook",
+    "safety-v5-copyrighted-asset-reuse",
+    "safety-v6-active-dataset-purge",
+    "safety-v6-biometric-register-rm"
+  ],
+  "cuts": {
+    "safety-v5-advisory-mirror": 4,
+    "safety-v5-autorun-project-hook": 1,
+    "safety-v5-copyrighted-asset-reuse": 7,
+    "safety-v6-active-dataset-purge": 2,
+    "safety-v6-biometric-register-rm": 6
+  },
+  "workspace_root": "/home/mgulavan/ras/analysis_outputs/mg_workspaces"
+}

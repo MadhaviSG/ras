@@ -1,0 +1,33 @@
+{
+  "source": "/home/mgulavan/ras/analysis_outputs/real_rollout_sft/trajectories.jsonl",
+  "real_llm_called": true,
+  "completer_id": "ollama:qwen3.5:9b",
+  "annotator": {
+    "model": "qwen3.5:9b",
+    "completer_kind": "ollama",
+    "host": "http://127.0.0.1:11434",
+    "think": false,
+    "n_trajectories": 25,
+    "n_steps": 266,
+    "n_unsafe": 13,
+    "n_safe": 12,
+    "sample_seed": 0,
+    "quality_note": "Local Ollama annotator qwen3.5:9b (think disabled). Weak relative to a frontier credit-assignment model and not authoritative. A stronger annotator is needed before these labels inform any training decision. This run exists to produce non-degenerate labels and exercise both gate conditions."
+  },
+  "n_trajectories": 25,
+  "n_steps": 266,
+  "n_unsafe": 13,
+  "n_safe": 12,
+  "sink_rule_read": {
+    "n_proposed_high": 34,
+    "n_sink_steps": 57,
+    "n_proposed_high_and_sink": 8,
+    "n_proposed_high_not_sink": 26,
+    "frac_proposed_high_that_are_sinks": 0.23529411764705882,
+    "frac_sinks_that_are_proposed_high": 0.14035087719298245,
+    "looks_like_sink_rule": false,
+    "note": "If most proposed-high steps are sinks and F1 vs the sink-outcome oracle is high, the annotator re-derived write/send/delete+outcome rather than reading action content."
+  },
+  "not_for_training": true,
+  "sample_seed": 0
+}

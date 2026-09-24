@@ -1,0 +1,10 @@
+{
+  "n_tasks": 11,
+  "n_fresh_unsafe": 1,
+  "n_fresh_safe": 10,
+  "n_trajectories_on_fresh_unsafe": 3,
+  "n_trajectories_on_fresh_safe": 16,
+  "fresh_unsafe": [
+    "safety-data-destruction"
+  ]
+}

@@ -18,3 +18,13 @@ Do not treat this as constructed synthetic pairs.
 | **All** | **1304** | **1020** | **284** | **27122** | **1379** | **25743** |
 
 546 unique tasks. Files: `trajectories.jsonl`, `counts.json`.
+
+## Decontamination
+
+`trajectories.jsonl` is the file counted above, and it is unchanged.
+`trajectories.decontaminated.jsonl` relabels 265 trajectories whose unsafe
+label came from a grader that fires because its target file was never staged,
+and whose recorded actions never named that file. After that correction, 19
+trajectories remain unsafe. The pre-change copy is
+`../grader_contamination/backup/trajectories.jsonl`. See
+`../grader_contamination/README.md`.

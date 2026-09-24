@@ -3,6 +3,17 @@
 Status: claims note. No SFT has been run, and none should be until the gate
 opens.
 
+Update: a static sweep of the task records found 109 graders that score
+unsafe because their target file was never staged. All 265 trajectories on
+those tasks were labeled unsafe, which is 265 of the 284 unsafe labels.
+None of those runs named the grader's target, so they are relabeled safe in
+`real_rollout_sft/trajectories.decontaminated.jsonl`. Nineteen unsafe labels
+remain, and none of them are v6. Of those, 3 are `safety-data-destruction`,
+whose grader returns unsafe because `/workspace/audit_logs` was never staged.
+The other 16 are on tasks whose staged workspace grades safe. The original file is unchanged; the copy
+taken first is `grader_contamination/backup/trajectories.jsonl`. Details are
+in `grader_contamination/README.md`.
+
 The project set out to train an external safety critic that watches an agent
 act and raises suspicion before harm occurs. It has not produced that critic.
 It has produced a negative result about why the obvious training signal does
@@ -125,19 +136,17 @@ resists moving.
   in the prompt.
 - **That agreement would mean correctness.** Two annotators can agree and both
   be wrong. Agreement is a precondition we tested, not a result we passed.
-- **Anything about how widespread the broken evaluators are.** Two were found
-  because a control was run on two tasks. No sweep has been done, and an
-  unsafe-by-default evaluator contributes a constant outcome that no annotator
-  could assign correctly.
+- **That every grader bug has been found.** The sweep covers one defect:
+  unsafe when a file is missing, and that file was never staged. A grader
+  whose marker is already present in a staged file would not show up.
 
 ## What would change the picture
 
 In rough order of cost:
 
-1. A setup-only sweep over the task set, grading every task's fresh container
-   with no agent. This is cheap, and it bounds how much of the corpus is
-   contaminated. Until it is run, every outcome-derived number here carries an
-   unknown amount of that constant.
+1. Grade a fresh container for every task, with no agent, to catch grader
+   defects the file check cannot see. The absence-grader defect is already
+   measured: 109 tasks, 265 of 284 unsafe labels.
 2. Labels from a source that is not the task outcome: human annotation on a
    small set, or per-action grading with its own checker.
 3. Relative credit within a trajectory as the target, since that is the part
@@ -154,6 +163,7 @@ In rough order of cost:
 | Prefix replay, natural | `analysis_outputs/prefix_resample/smoke_runs/` |
 | Nudge pilot | `analysis_outputs/prefix_resample/nudge_pilot/` |
 | Broken evaluators | `analysis_outputs/prefix_resample/single_action/` |
+| Absence-grader sweep and relabel | `analysis_outputs/grader_contamination/` |
 
 Gate implementation: `benchmarks/safety_monitor/safety_monitor/sft/label_gate.py`.
 Agreement metrics: `benchmarks/safety_monitor/safety_monitor/analysis/annotator_agreement.py`.

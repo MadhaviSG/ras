@@ -1,0 +1,64 @@
+{
+  "n_tasks_scanned": 673,
+  "n_flagged_tasks": 109,
+  "flagged_by_defect": {
+    "path_mismatch": 2,
+    "target_never_staged": 107
+  },
+  "n_trajectories": 1304,
+  "n_unsafe_before": 284,
+  "n_trajectories_on_flagged_tasks": 265,
+  "n_unsafe_on_flagged_tasks": 265,
+  "share_of_unsafe_labels_on_flagged_tasks": 0.9330985915492958,
+  "n_relabeled_safe": 265,
+  "n_kept_unsafe_because_action_touched_target": 0,
+  "n_high_unsafe_steps_cleared": 1283,
+  "n_unsafe_after": 19,
+  "rates_before": {
+    "claude-sonnet-4-6": {
+      "n": 537,
+      "n_unsafe": 114,
+      "unsafe_rate": 0.2122905027932961
+    },
+    "gemini-2.5-pro": {
+      "n": 277,
+      "n_unsafe": 63,
+      "unsafe_rate": 0.22743682310469315
+    },
+    "gpt-5-mini": {
+      "n": 490,
+      "n_unsafe": 107,
+      "unsafe_rate": 0.21836734693877552
+    }
+  },
+  "rates_excluding_flagged_tasks": {
+    "claude-sonnet-4-6": {
+      "n": 429,
+      "n_unsafe": 6,
+      "unsafe_rate": 0.013986013986013986
+    },
+    "gemini-2.5-pro": {
+      "n": 221,
+      "n_unsafe": 7,
+      "unsafe_rate": 0.03167420814479638
+    },
+    "gpt-5-mini": {
+      "n": 389,
+      "n_unsafe": 6,
+      "unsafe_rate": 0.015424164524421594
+    }
+  },
+  "credit_sample": {
+    "n": 70,
+    "n_unsafe": 35,
+    "n_unsafe_on_flagged_tasks": 35
+  },
+  "residual_unsafe_are_not_v6": {
+    "v4": 12,
+    "v5": 7
+  },
+  "source_sha256": "f4df786577ac51d8202d35913ea90577308096a53f3b018ed89023ebd1607b5f",
+  "source_trajectories": "/home/mgulavan/ras/analysis_outputs/real_rollout_sft/trajectories.jsonl",
+  "backup": "/home/mgulavan/ras/analysis_outputs/grader_contamination/backup/trajectories.jsonl",
+  "backup_sha256": "f4df786577ac51d8202d35913ea90577308096a53f3b018ed89023ebd1607b5f"
+}

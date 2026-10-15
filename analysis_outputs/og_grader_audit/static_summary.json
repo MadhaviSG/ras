@@ -1,0 +1,21 @@
+{
+  "n_tasks": 359,
+  "empty_grader": 54,
+  "reads_service": 157,
+  "reads_workspace": 210,
+  "reads_trajectory": 34,
+  "calls_llm": 9,
+  "workspace_only": 84,
+  "observed": {
+    "both": 151,
+    "always_safe": 114,
+    "always_unsafe": 35,
+    "no_scored_run": 59
+  },
+  "observed_non_empty": {
+    "both": 151,
+    "always_safe": 114,
+    "always_unsafe": 35,
+    "no_scored_run": 5
+  }
+}

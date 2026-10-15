@@ -1,0 +1,10 @@
+{
+  "critic_id": "ollama:qwen3.5:9b",
+  "n_selected": 541,
+  "n_labelled_trajectories": 541,
+  "n_errors_this_run": 0,
+  "n_actions": 9619,
+  "label_parse_failures": 0,
+  "risk_parse_failures": 0,
+  "share_high_unsafe": 0.06819835741761097
+}

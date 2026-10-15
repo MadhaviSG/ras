@@ -1,0 +1,609 @@
+{
+  "families": [
+    "passive"
+  ],
+  "n_excluded_tasks": 0,
+  "n_scored_trajectories": 541,
+  "n_after_dropping_blocked": 541,
+  "n_after_tier_filter": 476,
+  "tier_filter": [
+    "valid"
+  ],
+  "bootstrap_resamples": 2000,
+  "groups": {
+    "all": {
+      "n": 476,
+      "n_unsafe": 172,
+      "n_tasks": 260,
+      "signals": {
+        "n_actions": {
+          "auroc": 0.4332,
+          "auroc_ci95": [
+            0.3738,
+            0.4907
+          ],
+          "within_task_concordance": 0.6279,
+          "within_task_ci95": [
+            0.52,
+            0.7407
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.2319,
+            -0.0443
+          ]
+        },
+        "keyword_count": {
+          "auroc": 0.4653,
+          "auroc_ci95": [
+            0.4118,
+            0.5188
+          ],
+          "within_task_concordance": 0.5116,
+          "within_task_ci95": [
+            0.4375,
+            0.5893
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1854,
+            -0.0255
+          ]
+        },
+        "task_identity_oof": {
+          "auroc": 0.5716,
+          "auroc_ci95": [
+            0.5104,
+            0.6329
+          ],
+          "within_task_concordance": 0.5,
+          "within_task_ci95": [
+            0.5,
+            0.5
+          ],
+          "n_mixed_tasks": 43
+        },
+        "ollama:qwen3.5:9b:count": {
+          "auroc": 0.4698,
+          "auroc_ci95": [
+            0.4174,
+            0.5256
+          ],
+          "within_task_concordance": 0.5465,
+          "within_task_ci95": [
+            0.46,
+            0.6317
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1863,
+            -0.022
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:fraction": {
+          "auroc": 0.5046,
+          "auroc_ci95": [
+            0.4515,
+            0.5608
+          ],
+          "within_task_concordance": 0.6163,
+          "within_task_ci95": [
+            0.5357,
+            0.7046
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1488,
+            0.0118
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:max_risk": {
+          "auroc": 0.4706,
+          "auroc_ci95": [
+            0.415,
+            0.5289
+          ],
+          "within_task_concordance": 0.5349,
+          "within_task_ci95": [
+            0.4464,
+            0.6334
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1882,
+            -0.0186
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:mean_risk": {
+          "auroc": 0.5067,
+          "auroc_ci95": [
+            0.4507,
+            0.5656
+          ],
+          "within_task_concordance": 0.6279,
+          "within_task_ci95": [
+            0.52,
+            0.7407
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1507,
+            0.0171
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:count": {
+          "auroc": 0.508,
+          "auroc_ci95": [
+            0.4934,
+            0.5255
+          ],
+          "within_task_concordance": 0.5116,
+          "within_task_ci95": [
+            0.48,
+            0.54
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1275,
+            0.0003
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:fraction": {
+          "auroc": 0.508,
+          "auroc_ci95": [
+            0.4934,
+            0.5255
+          ],
+          "within_task_concordance": 0.5116,
+          "within_task_ci95": [
+            0.48,
+            0.54
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1275,
+            0.0003
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:max_risk": {
+          "auroc": 0.5516,
+          "auroc_ci95": [
+            0.4972,
+            0.6038
+          ],
+          "within_task_concordance": 0.5,
+          "within_task_ci95": [
+            0.4038,
+            0.5926
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.0958,
+            0.0549
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:mean_risk": {
+          "auroc": 0.5516,
+          "auroc_ci95": [
+            0.4972,
+            0.6038
+          ],
+          "within_task_concordance": 0.5,
+          "within_task_ci95": [
+            0.4038,
+            0.5926
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.0958,
+            0.0549
+          ],
+          "passes_rule": false
+        }
+      }
+    },
+    "litellm_proxy/azure_ai/gpt-5-mini": {
+      "n": 239,
+      "n_unsafe": 93,
+      "n_tasks": 239,
+      "signals": {
+        "n_actions": {
+          "auroc": 0.4054,
+          "auroc_ci95": [
+            0.3373,
+            0.479
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2719,
+            -0.0411
+          ]
+        },
+        "keyword_count": {
+          "auroc": 0.4689,
+          "auroc_ci95": [
+            0.4053,
+            0.5334
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1926,
+            0.0056
+          ]
+        },
+        "task_identity_oof": {
+          "auroc": 0.5644,
+          "auroc_ci95": [
+            0.4893,
+            0.6374
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0
+        },
+        "ollama:qwen3.5:9b:count": {
+          "auroc": 0.4359,
+          "auroc_ci95": [
+            0.3713,
+            0.5067
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2284,
+            -0.025
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:fraction": {
+          "auroc": 0.4732,
+          "auroc_ci95": [
+            0.4058,
+            0.5489
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.193,
+            0.0117
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:max_risk": {
+          "auroc": 0.4217,
+          "auroc_ci95": [
+            0.3502,
+            0.4968
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2459,
+            -0.034
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:mean_risk": {
+          "auroc": 0.4698,
+          "auroc_ci95": [
+            0.3979,
+            0.5487
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1993,
+            0.014
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:count": {
+          "auroc": 0.5073,
+          "auroc_ci95": [
+            0.4932,
+            0.5251
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.134,
+            0.0209
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:fraction": {
+          "auroc": 0.5073,
+          "auroc_ci95": [
+            0.4932,
+            0.5251
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.134,
+            0.0209
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:max_risk": {
+          "auroc": 0.5466,
+          "auroc_ci95": [
+            0.4746,
+            0.6197
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1219,
+            0.0785
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:mean_risk": {
+          "auroc": 0.5466,
+          "auroc_ci95": [
+            0.4746,
+            0.6197
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1219,
+            0.0785
+          ],
+          "passes_rule": false
+        }
+      }
+    },
+    "litellm_proxy/neulab/claude-sonnet-4-5-20250929": {
+      "n": 237,
+      "n_unsafe": 79,
+      "n_tasks": 237,
+      "signals": {
+        "n_actions": {
+          "auroc": 0.465,
+          "auroc_ci95": [
+            0.3881,
+            0.5418
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2256,
+            -0.0033
+          ]
+        },
+        "keyword_count": {
+          "auroc": 0.459,
+          "auroc_ci95": [
+            0.3947,
+            0.5248
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2054,
+            -0.0335
+          ]
+        },
+        "task_identity_oof": {
+          "auroc": 0.5766,
+          "auroc_ci95": [
+            0.5063,
+            0.6486
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0
+        },
+        "ollama:qwen3.5:9b:count": {
+          "auroc": 0.5005,
+          "auroc_ci95": [
+            0.4313,
+            0.5712
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1738,
+            0.0137
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:fraction": {
+          "auroc": 0.5328,
+          "auroc_ci95": [
+            0.461,
+            0.6031
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1399,
+            0.0499
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:max_risk": {
+          "auroc": 0.519,
+          "auroc_ci95": [
+            0.4453,
+            0.5892
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1571,
+            0.0363
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:mean_risk": {
+          "auroc": 0.5358,
+          "auroc_ci95": [
+            0.4589,
+            0.612
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1399,
+            0.0522
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:count": {
+          "auroc": 0.5095,
+          "auroc_ci95": [
+            0.4871,
+            0.5346
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1463,
+            0.0093
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:fraction": {
+          "auroc": 0.5095,
+          "auroc_ci95": [
+            0.4871,
+            0.5346
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1463,
+            0.0093
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:max_risk": {
+          "auroc": 0.5588,
+          "auroc_ci95": [
+            0.4854,
+            0.6282
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1151,
+            0.0744
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:trajectory-judge:mean_risk": {
+          "auroc": 0.5588,
+          "auroc_ci95": [
+            0.4854,
+            0.6282
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1151,
+            0.0744
+          ],
+          "passes_rule": false
+        }
+      }
+    }
+  }
+}

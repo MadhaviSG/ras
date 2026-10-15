@@ -1,0 +1,825 @@
+{
+  "families": [
+    "passive"
+  ],
+  "n_excluded_tasks": 0,
+  "n_scored_trajectories": 541,
+  "n_after_dropping_blocked": 541,
+  "n_after_tier_filter": 476,
+  "tier_filter": [
+    "valid"
+  ],
+  "bootstrap_resamples": 2000,
+  "groups": {
+    "all": {
+      "n": 474,
+      "n_unsafe": 172,
+      "n_tasks": 259,
+      "signals": {
+        "n_actions": {
+          "auroc": 0.4358,
+          "auroc_ci95": [
+            0.3763,
+            0.4954
+          ],
+          "within_task_concordance": 0.6279,
+          "within_task_ci95": [
+            0.5185,
+            0.7322
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.2343,
+            -0.043
+          ]
+        },
+        "keyword_count": {
+          "auroc": 0.4672,
+          "auroc_ci95": [
+            0.415,
+            0.5213
+          ],
+          "within_task_concordance": 0.5116,
+          "within_task_ci95": [
+            0.4348,
+            0.5893
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1859,
+            -0.0302
+          ]
+        },
+        "task_identity_oof": {
+          "auroc": 0.5749,
+          "auroc_ci95": [
+            0.512,
+            0.6354
+          ],
+          "within_task_concordance": 0.5,
+          "within_task_ci95": [
+            0.5,
+            0.5
+          ],
+          "n_mixed_tasks": 43
+        },
+        "ollama:qwen3.5:9b:count": {
+          "auroc": 0.4699,
+          "auroc_ci95": [
+            0.4144,
+            0.5252
+          ],
+          "within_task_concordance": 0.5465,
+          "within_task_ci95": [
+            0.4545,
+            0.6346
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1845,
+            -0.0226
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:fraction": {
+          "auroc": 0.5041,
+          "auroc_ci95": [
+            0.4477,
+            0.5613
+          ],
+          "within_task_concordance": 0.6163,
+          "within_task_ci95": [
+            0.5312,
+            0.7037
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1494,
+            0.0081
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:max_risk": {
+          "auroc": 0.4715,
+          "auroc_ci95": [
+            0.4115,
+            0.5309
+          ],
+          "within_task_concordance": 0.5349,
+          "within_task_ci95": [
+            0.4444,
+            0.6251
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1864,
+            -0.0195
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:mean_risk": {
+          "auroc": 0.5068,
+          "auroc_ci95": [
+            0.4483,
+            0.5671
+          ],
+          "within_task_concordance": 0.6279,
+          "within_task_ci95": [
+            0.5192,
+            0.74
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1476,
+            0.0143
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:count": {
+          "auroc": 0.4694,
+          "auroc_ci95": [
+            0.4107,
+            0.5269
+          ],
+          "within_task_concordance": 0.6279,
+          "within_task_ci95": [
+            0.5357,
+            0.72
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1912,
+            -0.0165
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:fraction": {
+          "auroc": 0.5009,
+          "auroc_ci95": [
+            0.4405,
+            0.56
+          ],
+          "within_task_concordance": 0.6395,
+          "within_task_ci95": [
+            0.5434,
+            0.7321
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1565,
+            0.0127
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:max_risk": {
+          "auroc": 0.4924,
+          "auroc_ci95": [
+            0.4321,
+            0.5486
+          ],
+          "within_task_concordance": 0.5465,
+          "within_task_ci95": [
+            0.44,
+            0.6458
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1677,
+            0.005
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:mean_risk": {
+          "auroc": 0.522,
+          "auroc_ci95": [
+            0.4637,
+            0.5797
+          ],
+          "within_task_concordance": 0.6395,
+          "within_task_ci95": [
+            0.5332,
+            0.75
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.1359,
+            0.0327
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:count": {
+          "auroc": 0.613,
+          "auroc_ci95": [
+            0.5557,
+            0.6695
+          ],
+          "within_task_concordance": 0.7209,
+          "within_task_ci95": [
+            0.625,
+            0.8182
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.0419,
+            0.1222
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:fraction": {
+          "auroc": 0.6678,
+          "auroc_ci95": [
+            0.6079,
+            0.7226
+          ],
+          "within_task_concordance": 0.8023,
+          "within_task_ci95": [
+            0.7222,
+            0.8966
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            0.0169,
+            0.1732
+          ],
+          "passes_rule": true
+        },
+        "ollama:qwen3.5:9b:criteria:max_risk": {
+          "auroc": 0.6072,
+          "auroc_ci95": [
+            0.5517,
+            0.6592
+          ],
+          "within_task_concordance": 0.686,
+          "within_task_ci95": [
+            0.587,
+            0.7826
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            -0.05,
+            0.1194
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:mean_risk": {
+          "auroc": 0.6649,
+          "auroc_ci95": [
+            0.6037,
+            0.7222
+          ],
+          "within_task_concordance": 0.814,
+          "within_task_ci95": [
+            0.7308,
+            0.9167
+          ],
+          "n_mixed_tasks": 43,
+          "delta_vs_task_identity_ci95": [
+            0.0137,
+            0.1716
+          ],
+          "passes_rule": true
+        }
+      }
+    },
+    "litellm_proxy/azure_ai/gpt-5-mini": {
+      "n": 238,
+      "n_unsafe": 93,
+      "n_tasks": 238,
+      "signals": {
+        "n_actions": {
+          "auroc": 0.4082,
+          "auroc_ci95": [
+            0.3386,
+            0.4806
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2747,
+            -0.0487
+          ]
+        },
+        "keyword_count": {
+          "auroc": 0.4713,
+          "auroc_ci95": [
+            0.4075,
+            0.5409
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1945,
+            0.0014
+          ]
+        },
+        "task_identity_oof": {
+          "auroc": 0.5703,
+          "auroc_ci95": [
+            0.4975,
+            0.6417
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0
+        },
+        "ollama:qwen3.5:9b:count": {
+          "auroc": 0.4377,
+          "auroc_ci95": [
+            0.3705,
+            0.5056
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2311,
+            -0.0294
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:fraction": {
+          "auroc": 0.4736,
+          "auroc_ci95": [
+            0.4021,
+            0.5471
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1962,
+            0.0067
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:max_risk": {
+          "auroc": 0.4242,
+          "auroc_ci95": [
+            0.3516,
+            0.4964
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.25,
+            -0.0403
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:mean_risk": {
+          "auroc": 0.4703,
+          "auroc_ci95": [
+            0.3955,
+            0.5486
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2013,
+            0.0033
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:count": {
+          "auroc": 0.4358,
+          "auroc_ci95": [
+            0.3669,
+            0.5064
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2435,
+            -0.025
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:fraction": {
+          "auroc": 0.4799,
+          "auroc_ci95": [
+            0.406,
+            0.557
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1996,
+            0.0164
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:max_risk": {
+          "auroc": 0.4568,
+          "auroc_ci95": [
+            0.383,
+            0.5318
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.2212,
+            0.0005
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:mean_risk": {
+          "auroc": 0.4982,
+          "auroc_ci95": [
+            0.4214,
+            0.573
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1797,
+            0.0344
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:count": {
+          "auroc": 0.6168,
+          "auroc_ci95": [
+            0.5459,
+            0.6847
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.0514,
+            0.1427
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:fraction": {
+          "auroc": 0.6828,
+          "auroc_ci95": [
+            0.6147,
+            0.748
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            0.0155,
+            0.2029
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:max_risk": {
+          "auroc": 0.605,
+          "auroc_ci95": [
+            0.5365,
+            0.6712
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.0753,
+            0.1354
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:mean_risk": {
+          "auroc": 0.6733,
+          "auroc_ci95": [
+            0.6025,
+            0.7415
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            0.0057,
+            0.1942
+          ],
+          "passes_rule": false
+        }
+      }
+    },
+    "litellm_proxy/neulab/claude-sonnet-4-5-20250929": {
+      "n": 236,
+      "n_unsafe": 79,
+      "n_tasks": 236,
+      "signals": {
+        "n_actions": {
+          "auroc": 0.4675,
+          "auroc_ci95": [
+            0.393,
+            0.5446
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1974,
+            0.0302
+          ]
+        },
+        "keyword_count": {
+          "auroc": 0.4604,
+          "auroc_ci95": [
+            0.3955,
+            0.5248
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1839,
+            -0.0051
+          ]
+        },
+        "task_identity_oof": {
+          "auroc": 0.5538,
+          "auroc_ci95": [
+            0.4802,
+            0.6282
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0
+        },
+        "ollama:qwen3.5:9b:count": {
+          "auroc": 0.499,
+          "auroc_ci95": [
+            0.432,
+            0.5651
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1464,
+            0.0396
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:fraction": {
+          "auroc": 0.5315,
+          "auroc_ci95": [
+            0.4615,
+            0.6025
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1151,
+            0.0766
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:max_risk": {
+          "auroc": 0.5183,
+          "auroc_ci95": [
+            0.4473,
+            0.5899
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1371,
+            0.0644
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:mean_risk": {
+          "auroc": 0.5356,
+          "auroc_ci95": [
+            0.4575,
+            0.6114
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1154,
+            0.0843
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:count": {
+          "auroc": 0.5006,
+          "auroc_ci95": [
+            0.4337,
+            0.5762
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1512,
+            0.0528
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:fraction": {
+          "auroc": 0.5204,
+          "auroc_ci95": [
+            0.4482,
+            0.5984
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1269,
+            0.0682
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:max_risk": {
+          "auroc": 0.5255,
+          "auroc_ci95": [
+            0.4532,
+            0.6024
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1271,
+            0.076
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:policy:mean_risk": {
+          "auroc": 0.5424,
+          "auroc_ci95": [
+            0.4685,
+            0.6199
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.1079,
+            0.0934
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:count": {
+          "auroc": 0.6055,
+          "auroc_ci95": [
+            0.5312,
+            0.6787
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.0531,
+            0.1652
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:fraction": {
+          "auroc": 0.6444,
+          "auroc_ci95": [
+            0.5715,
+            0.72
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.0138,
+            0.2052
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:max_risk": {
+          "auroc": 0.6082,
+          "auroc_ci95": [
+            0.5385,
+            0.6788
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.0495,
+            0.1664
+          ],
+          "passes_rule": false
+        },
+        "ollama:qwen3.5:9b:criteria:mean_risk": {
+          "auroc": 0.6521,
+          "auroc_ci95": [
+            0.5792,
+            0.7265
+          ],
+          "within_task_concordance": null,
+          "within_task_ci95": [
+            null,
+            null
+          ],
+          "n_mixed_tasks": 0,
+          "delta_vs_task_identity_ci95": [
+            -0.0021,
+            0.2137
+          ],
+          "passes_rule": false
+        }
+      }
+    }
+  }
+}

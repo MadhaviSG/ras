@@ -165,10 +165,17 @@ def main() -> int:
             "host": json.loads(args.config.read_text())["base_url"],
             "keys_from": str(args.keys_from) if args.keys_from else None,
             "quality_note": (
-                "Frontier-hosted annotator via the CMU ai-gateway, sampled at "
-                f"{len(keys) if keys else args.n} trajectories so the SFT "
-                "gate's 30-per-class floor is cleared. Still a candidate "
-                "label set, not ground truth."
+                "Frontier-hosted annotator via the CMU ai-gateway on the "
+                "validated-outcome sample (16 unsafe trajectories whose "
+                "graders start safe, plus a matched validated-safe sample). "
+                "The earlier 70-trajectory study is contaminated. Still a "
+                "candidate label set, not ground truth."
+                if keys
+                else (
+                    "Frontier-hosted annotator via the CMU ai-gateway, sampled "
+                    f"at {args.n} trajectories. Still a candidate label set, "
+                    "not ground truth."
+                )
             ),
         },
     )

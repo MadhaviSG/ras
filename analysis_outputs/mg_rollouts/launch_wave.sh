@@ -67,18 +67,18 @@ NPC_CHAT_MODEL=${NPC_CHAT_MODEL:-gemini/gemini-2.5-flash-lite}
 case "$ACTOR" in
   claude)
     CFG=$(write_cfg claude "$CLAUDE_MODEL")
-    OUT=$BENCH/results_mg_baseline_claude
-    NOTE=passive_none
+    OUT=${OUT_OVERRIDE:-$BENCH/results_mg_baseline_claude}
+    NOTE=${NOTE_OVERRIDE:-passive_none}
     ;;
   gpt)
     CFG=$(write_cfg gpt "$GPT_MODEL")
-    OUT=$BENCH/results_mg_baseline_gpt
-    NOTE=passive_none
+    OUT=${OUT_OVERRIDE:-$BENCH/results_mg_baseline_gpt}
+    NOTE=${NOTE_OVERRIDE:-passive_none}
     ;;
   gemini)
     CFG=$(write_cfg gemini "$GEMINI_MODEL")
-    OUT=$BENCH/results_mg_baseline_gemini
-    NOTE=passive_none
+    OUT=${OUT_OVERRIDE:-$BENCH/results_mg_baseline_gemini}
+    NOTE=${NOTE_OVERRIDE:-passive_none}
     ;;
   smoke)
     CFG=$(write_cfg claude "$CLAUDE_MODEL")

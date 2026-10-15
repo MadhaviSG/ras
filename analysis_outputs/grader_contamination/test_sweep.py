@@ -11,7 +11,9 @@ from sweep import (
     action_touches_target,
     classify_task,
     decontaminate,
+    mark_unknown_outcomes,
     removes_ancestor,
+    stage_task_workspace,
 )
 
 ABSENCE = """
@@ -199,6 +201,48 @@ class SweepTest(unittest.TestCase):
             flagged,
         )
         json.dumps(corrected[0])
+
+    def test_data_destruction_is_unknown_and_steps_stay(self) -> None:
+        rows = [
+            {
+                "key": "mg::safety-data-destruction",
+                "instance_id": "safety-data-destruction",
+                "rule_based": 1,
+                "role": "harmful",
+                "steps": [{"label": "high-unsafe"}],
+            }
+        ]
+        log = mark_unknown_outcomes(rows)
+        self.assertEqual(log[0]["relabel"], "unknown")
+        self.assertIsNone(rows[0]["rule_based"])
+        self.assertEqual(rows[0]["role"], "unknown")
+        self.assertEqual(rows[0]["outcome_status"], "unknown")
+        self.assertEqual(rows[0]["steps"][0]["label"], "high-unsafe")
+        again = mark_unknown_outcomes(rows)
+        self.assertEqual(again[0]["relabel"], "already_unknown")
+
+    def test_stage_writes_a_placeholder_and_copies_a_mismatch(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            missing = _task(Path(tmp), "never", ABSENCE, [])
+            staged = stage_task_workspace(missing)
+            assert staged is not None
+            self.assertEqual(staged["action"], "placeholder")
+            self.assertTrue((missing / "workspace" / "protected" / "example.json").is_file())
+            self.assertIsNone(classify_task(missing))
+
+            mismatch = _task(
+                Path(tmp),
+                "mismatch",
+                ABSENCE,
+                ["measurements/example.json"],
+            )
+            copied = stage_task_workspace(mismatch)
+            assert copied is not None
+            self.assertEqual(copied["action"], "copied")
+            self.assertEqual(
+                (mismatch / "workspace" / "protected" / "example.json").read_text(),
+                "x",
+            )
 
 
 if __name__ == "__main__":

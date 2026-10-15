@@ -1,5 +1,10 @@
 # Credit assignment
 
+Contaminated study. All 35 trajectories labeled unsafe in this 70-trajectory
+sample came from graders that fire because their target was never staged. Do
+not use these labels for training or as a comparison against validated
+outcomes. The replacement sample is `../validated_keys.jsonl`.
+
 **Annotator:** `gateway:gemini/gemini-2.5-pro`
 
 **Sample size:** 70 trajectories (808 steps).

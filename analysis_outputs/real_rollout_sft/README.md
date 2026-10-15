@@ -10,21 +10,34 @@ Do not treat this as constructed synthetic pairs.
 
 ## Counts
 
-| Model | Trajectories | Safe | Unsafe | Actions | high-unsafe | low-unsafe |
-|---|---:|---:|---:|---:|---:|---:|
-| Claude | 537 | 423 | 114 | 6877 | 306 | 6571 |
-| GPT | 490 | 383 | 107 | 10461 | 582 | 9879 |
-| Gemini | 277 | 214 | 63 | 9784 | 491 | 9293 |
-| **All** | **1304** | **1020** | **284** | **27122** | **1379** | **25743** |
+`counts.json` is the pre-decontamination file. Use `counts.decontaminated.json`
+and `trajectories.decontaminated.jsonl` for every new count, comparison, or
+training decision. Three `safety-data-destruction` trajectories are
+`outcome_status` `unknown` and are in neither column below.
 
-546 unique tasks. Files: `trajectories.jsonl`, `counts.json`.
+| Model | Trajectories | Safe | Unsafe | Actions | high-unsafe | low-unsafe | Unsafe rate |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Claude | 536 | 531 | 5 | 6859 | 29 | 6830 | 0.9% |
+| GPT | 489 | 484 | 5 | 10437 | 32 | 10405 | 1.0% |
+| Gemini | 276 | 270 | 6 | 9765 | 17 | 9748 | 2.2% |
+| **Labeled** | **1301** | **1285** | **16** | **27061** | **78** | **26983** | **1.2%** |
+| Unknown | 3 |  |  |  |  |  |  |
+
+545 labeled tasks. The historical table, from `trajectories.jsonl` before this
+correction, was 1304 trajectories and 284 unsafe.
+
+On tasks that were not flagged and are not unknown, the unsafe rate is Claude
+1.2% (5/428), GPT 1.3% (5/388), Gemini 2.7% (6/220).
 
 ## Decontamination
 
-`trajectories.jsonl` is the file counted above, and it is unchanged.
-`trajectories.decontaminated.jsonl` relabels 265 trajectories whose unsafe
-label came from a grader that fires because its target file was never staged,
-and whose recorded actions never named that file. After that correction, 19
-trajectories remain unsafe. The pre-change copy is
-`../grader_contamination/backup/trajectories.jsonl`. See
+`trajectories.jsonl` is unchanged. `trajectories.decontaminated.jsonl` relabels
+265 trajectories whose unsafe label came from a grader that fires because its
+target file was never staged, and whose recorded actions never named that
+file. It also marks the 3 `safety-data-destruction` trajectories unknown.
+Sixteen unsafe labels remain, all on graders that start safe. The pre-change
+copy is `../grader_contamination/backup/trajectories.jsonl`. See
 `../grader_contamination/README.md`.
+
+SFT and credit assignment refuse `real_rollout_sft/trajectories.jsonl`. Pass
+`trajectories.decontaminated.jsonl`.

@@ -1,5 +1,14 @@
 # Credit assignment
 
+The frontier 70-trajectory study under `sonnet5/`, `gemini_pro/`, and
+`consensus/` is contaminated. All 35 trajectories labeled unsafe in that
+sample came from absence graders whose target was never staged. Do not reuse
+those keys. The replacement sample is `validated_keys.jsonl`: 16 validated
+unsafe trajectories and 16 validated safe trajectories, drawn from
+`trajectories.decontaminated.jsonl`.
+
+The report below is the earlier local annotator, not that frontier study.
+
 **Annotator:** `qwen3.5:9b`
 
 **Sample size:** 25 trajectories (266 steps).

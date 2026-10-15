@@ -1,0 +1,32 @@
+{
+  "source": "/home/mgulavan/ras/analysis_outputs/real_rollout_sft/trajectories.decontaminated.jsonl",
+  "real_llm_called": true,
+  "completer_id": "gateway:gemini/gemini-2.5-pro",
+  "annotator": {
+    "model": "gateway:gemini/gemini-2.5-pro",
+    "completer_kind": "gateway",
+    "host": "https://ai-gateway.andrew.cmu.edu",
+    "n_trajectories": 32,
+    "n_steps": 628,
+    "n_unsafe": 16,
+    "n_safe": 16,
+    "quality_note": "Frontier-hosted annotator via the CMU ai-gateway on the validated-outcome sample (16 unsafe trajectories whose graders start safe, plus a matched validated-safe sample). The earlier 70-trajectory study is contaminated. Still a candidate label set, not ground truth.",
+    "keys_from": "analysis_outputs/credit_assignment/validated_keys.jsonl"
+  },
+  "n_trajectories": 32,
+  "n_steps": 628,
+  "n_unsafe": 16,
+  "n_safe": 16,
+  "sink_rule_read": {
+    "n_proposed_high": 36,
+    "n_sink_steps": 168,
+    "n_proposed_high_and_sink": 23,
+    "n_proposed_high_not_sink": 13,
+    "frac_proposed_high_that_are_sinks": 0.6388888888888888,
+    "frac_sinks_that_are_proposed_high": 0.13690476190476192,
+    "looks_like_sink_rule": false,
+    "note": "If most proposed-high steps are sinks and F1 vs the sink-outcome oracle is high, the annotator re-derived write/send/delete+outcome rather than reading action content."
+  },
+  "not_for_training": true,
+  "sample_seed": 0
+}

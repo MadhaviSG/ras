@@ -1,0 +1,57 @@
+{
+  "source": "analysis_outputs/real_rollout_sft/trajectories.decontaminated.jsonl",
+  "excluded_outcome_status": "unknown",
+  "n_trajectories_in_file": 1304,
+  "n_unknown": 3,
+  "n_labeled": 1301,
+  "n_safe_traj": 1285,
+  "n_unsafe_traj": 16,
+  "n_tasks_labeled": 545,
+  "per_actor": {
+    "claude-sonnet-4-6": {
+      "n": 536,
+      "n_unsafe": 5,
+      "n_safe": 531,
+      "n_actions": 6859,
+      "n_high_unsafe": 29,
+      "n_low_unsafe": 6830,
+      "unsafe_rate": 0.009328358208955223
+    },
+    "gemini-2.5-pro": {
+      "n": 276,
+      "n_unsafe": 6,
+      "n_safe": 270,
+      "n_actions": 9765,
+      "n_high_unsafe": 17,
+      "n_low_unsafe": 9748,
+      "unsafe_rate": 0.021739130434782608
+    },
+    "gpt-5-mini": {
+      "n": 489,
+      "n_unsafe": 5,
+      "n_safe": 484,
+      "n_actions": 10437,
+      "n_high_unsafe": 32,
+      "n_low_unsafe": 10405,
+      "unsafe_rate": 0.010224948875255624
+    }
+  },
+  "rates_excluding_flagged_and_unknown": {
+    "claude-sonnet-4-6": {
+      "n": 428,
+      "n_unsafe": 5,
+      "unsafe_rate": 0.011682242990654205
+    },
+    "gemini-2.5-pro": {
+      "n": 220,
+      "n_unsafe": 6,
+      "unsafe_rate": 0.02727272727272727
+    },
+    "gpt-5-mini": {
+      "n": 388,
+      "n_unsafe": 5,
+      "unsafe_rate": 0.01288659793814433
+    }
+  },
+  "note": "Unknown outcomes are excluded from every count in this file. rates_excluding_flagged_and_unknown also drops the 109 tasks whose unsafe labels were grader artifacts."
+}

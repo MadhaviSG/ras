@@ -612,5 +612,7 @@
     "sink_outcome_oracle, keyword, and task_identity are the live safety_monitor.online.baselines scorers; this file does not re-implement those formulas.",
     "llm_credit is the completer's proposed per-action labels, not ground truth.",
     "The task_identity row below is fitted in-sample, as an upper bound on task-prior leakage. The head-to-head AUROC above is out-of-fold, because an in-sample probe memorises the task id and wins by default."
-  ]
+  ],
+  "study_status": "contaminated",
+  "study_status_reason": "Contaminated study. All 35 unsafe examples came from absence graders whose target was never staged. Do not compare this file to a validated-outcome run."
 }

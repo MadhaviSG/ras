@@ -1,5 +1,11 @@
 # Two annotators on the same 70 trajectories
 
+Contaminated study. All 35 trajectories labeled unsafe in this sample came
+from graders that fire because their target was never staged. The agreement
+numbers below describe that contaminated sample. They are not a result about
+validated unsafe behavior. Do not reuse `../sonnet5/proposed_labels.jsonl`.
+The replacement sample is `../validated_keys.jsonl`.
+
 ## The question
 
 The Sonnet credit labels failed the SFT gate. That failure has two possible

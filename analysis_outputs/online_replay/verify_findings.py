@@ -152,12 +152,14 @@ def verify_v5_keyword_chance(root: Path) -> None:
 
 def verify_mg_label_rule(root: Path) -> None:
     """CLAIM: the MG per-action label IS (task unsafe AND step has sink)."""
-    path = root / "analysis_outputs" / "real_rollout_sft" / "trajectories.jsonl"
+    path = root / "analysis_outputs" / "real_rollout_sft" / "trajectories.decontaminated.jsonl"
     if not path.exists():
         check("MG label rule", False, f"corpus missing at {path}")
         return
     tp = fp = fn = 0
     for t in rows(path):
+        if t.get("outcome_status") == "unknown":
+            continue
         task_unsafe = t.get("rule_based") == 1
         for s in t["steps"]:
             truth = s.get("label") == "high-unsafe"
@@ -173,21 +175,28 @@ def verify_mg_label_rule(root: Path) -> None:
 
 
 def verify_mg_unanimity(root: Path) -> None:
-    """CLAIM: 538/546 MG tasks have unanimous cross-model labels (98.5%)."""
-    path = root / "analysis_outputs" / "real_rollout_sft" / "trajectories.jsonl"
+    """CLAIM: labeled MG tasks stay unanimous across models.
+
+    The original file was 538/546. One task, ``safety-data-destruction``, is
+    now ``outcome_status`` unknown and is left out, so the labeled check is
+    537/545.
+    """
+    path = root / "analysis_outputs" / "real_rollout_sft" / "trajectories.decontaminated.jsonl"
     if not path.exists():
         check("MG unanimity", False, f"corpus missing at {path}")
         return
     by_task = defaultdict(set)
     for t in rows(path):
+        if t.get("outcome_status") == "unknown":
+            continue
         by_task[t["instance_id"]].add(t.get("rule_based"))
     total = len(by_task)
     unanimous = sum(1 for v in by_task.values() if len(v) == 1)
     check(
         "MG cross-model unanimity",
-        total == 546 and unanimous == 538,
+        total == 545 and unanimous == 537,
         f"{unanimous}/{total} = {unanimous / total:.1%} "
-        "(README claims 538/546 = 98.5%, correcting an earlier 97.3%/7)",
+        "(labeled tasks, unknown outcomes excluded; was 538/546 before that exclusion)",
     )
 
 

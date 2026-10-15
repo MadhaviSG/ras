@@ -28,9 +28,12 @@ BENCH_SM = RAS / "benchmarks" / "safety_monitor"
 if str(BENCH_SM) not in sys.path:
     sys.path.insert(0, str(BENCH_SM))
 
+from safety_monitor.sft.data import reject_contaminated_corpus  # noqa: E402
 from safety_monitor.synthesis.signatures import sink_category  # noqa: E402
 
-TRAJ_PATH = RAS / "analysis_outputs" / "real_rollout_sft" / "trajectories.jsonl"
+TRAJ_PATH = (
+    RAS / "analysis_outputs" / "real_rollout_sft" / "trajectories.decontaminated.jsonl"
+)
 TASK_PATH = RAS / "analysis_outputs" / "mg_rollouts" / "mg_train.jsonl"
 WS_ROOT = RAS / "analysis_outputs" / "mg_workspaces"
 OUT_DIR = RAS / "analysis_outputs" / "prefix_resample"
@@ -212,6 +215,7 @@ REASONS = {
 
 
 def main() -> int:
+    reject_contaminated_corpus(TRAJ_PATH)
     tasks = {row["instance_id"]: row for row in _read_jsonl(TASK_PATH)}
     by_id: dict[str, list[dict[str, Any]]] = {iid: [] for iid in SMOKE_INSTANCE_IDS}
     n_unsafe = 0

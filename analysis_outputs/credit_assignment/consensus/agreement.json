@@ -354,5 +354,7 @@
       "sonnet5_contributed": true,
       "gemini-2.5-pro_contributed": false
     }
-  ]
+  ],
+  "study_status": "contaminated",
+  "study_status_reason": "Contaminated study. All 35 unsafe examples came from absence graders whose target was never staged. Do not compare this file to a validated-outcome run."
 }

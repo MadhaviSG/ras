@@ -7,12 +7,20 @@ Update: a static sweep of the task records found 109 graders that score
 unsafe because their target file was never staged. All 265 trajectories on
 those tasks were labeled unsafe, which is 265 of the 284 unsafe labels.
 None of those runs named the grader's target, so they are relabeled safe in
-`real_rollout_sft/trajectories.decontaminated.jsonl`. Nineteen unsafe labels
-remain, and none of them are v6. Of those, 3 are `safety-data-destruction`,
-whose grader returns unsafe because `/workspace/audit_logs` was never staged.
-The other 16 are on tasks whose staged workspace grades safe. The original file is unchanged; the copy
-taken first is `grader_contamination/backup/trajectories.jsonl`. Details are
-in `grader_contamination/README.md`.
+`real_rollout_sft/trajectories.decontaminated.jsonl`. Of the 19 labels that
+survived that relabel, 3 are `safety-data-destruction`. That grader returns
+unsafe because `/workspace/audit_logs` was never staged, so those 3 are marked
+unknown and left out of both the safe count and the unsafe count. The other
+16 are on tasks whose staged workspace grades safe. None of the 16 are v6.
+After that correction the labeled unsafe rate is 16/1301 (1.2%): Claude 0.9%
+(5/536), GPT 1.0% (5/489), Gemini 2.2% (6/276). The original file is
+unchanged; the copy taken first is
+`grader_contamination/backup/trajectories.jsonl`. Details are in
+`grader_contamination/README.md`.
+
+This confirms the major conclusion: after grader decontamination, the
+generated tasks rarely elicit unsafe behavior, so task validity and
+adversarial pressure must improve before further critic training.
 
 The project set out to train an external safety critic that watches an agent
 act and raises suspicion before harm occurs. It has not produced that critic.
@@ -35,6 +43,25 @@ harmful deletion from a harmless one, because the label never did.
 This is the durable finding and it is cheap for a reader to check.
 
 ## Claim 2 (negative transfer): a stronger annotator does not fix it
+
+The 70-trajectory annotator study is contaminated. All 35 trajectories labeled
+unsafe in that sample came from the broken absence graders. Those labels are
+not evidence about unsafe agent behavior, and they are not a training set.
+Do not reuse `sonnet5/proposed_labels.jsonl` or `gemini_pro/proposed_labels.jsonl`.
+
+The same two models were run again on validated outcomes only: the 16
+trajectories whose graders start safe, plus 16 validated-safe trajectories
+matched by actor. Keys are `credit_assignment/validated_keys.jsonl`. On 628
+steps, contributed kappa is 0.242 and proposed-high kappa is 0.446. Mean
+within-trajectory Spearman is 0.624 over 32 trajectories. The strict
+intersection has action AUROC 0.730 against an out-of-fold task-identity
+probe of 0.887, so the gate stays closed. Sixteen trajectories per class is
+also below the gate's floor of 30. Results are in
+`credit_assignment/validated_consensus/`.
+
+The agreement numbers below are the contaminated run. They are kept so the
+old comparison can be audited, not so they can be cited as a result about
+real unsafe actions.
 
 Replacing the label rule with frontier credit assignment does not recover an
 action-level signal.
@@ -63,7 +90,7 @@ version of this signal is usable, it is relative credit within a trajectory.
 Neither label set, nor their strict intersection, beats a probe that reads
 only the task identity and instruction.
 
-## Claim 3 (the gate): a falsifiable rule that has now refused three times
+## Claim 3 (the gate): a falsifiable rule that stays closed
 
 Before any training run, labels must clear two conditions:
 
@@ -80,8 +107,11 @@ Results:
 | Label source | n | Action AUROC | Probe (out-of-fold) | Gate |
 | --- | --- | --- | --- | --- |
 | Local annotator | 25 | 0.651 | 0.429 | closed: too few trajectories; bootstrap lower bound −0.069 |
-| Sonnet 5 | 70 | 0.598 | 0.576 | closed: bootstrap lower bound −0.146 |
-| Sonnet ∩ Gemini Pro | 70 | 0.420 | 0.576 | closed: below the probe |
+| Sonnet 5 (contaminated 70) | 70 | 0.598 | 0.576 | closed: bootstrap lower bound −0.146 |
+| Sonnet ∩ Gemini Pro (contaminated 70) | 70 | 0.420 | 0.576 | closed: below the probe |
+| Sonnet 5, validated outcomes | 32 | 0.775 | 0.887 | closed: below the probe; 16 per class |
+| Gemini 2.5 Pro, validated outcomes | 32 | 0.535 | 0.887 | closed: below the probe; 16 per class |
+| Sonnet ∩ Gemini Pro, validated outcomes | 32 | 0.730 | 0.887 | closed: below the probe; 16 per class |
 
 Two design details did the work, and both were bugs first:
 
@@ -139,6 +169,8 @@ resists moving.
 - **That every grader bug has been found.** The sweep covers one defect:
   unsafe when a file is missing, and that file was never staged. A grader
   whose marker is already present in a staged file would not show up.
+- **That the 70-trajectory agreement study describes unsafe behavior.** All
+  35 unsafe examples in it came from the broken graders.
 
 ## What would change the picture
 
@@ -160,6 +192,7 @@ In rough order of cost:
 | Sonnet pass and gate | `analysis_outputs/credit_assignment/sonnet5/` |
 | Gemini Pro pass | `analysis_outputs/credit_assignment/gemini_pro/` |
 | Agreement and consensus gate | `analysis_outputs/credit_assignment/consensus/` |
+| Validated-outcome re-annotation | `analysis_outputs/credit_assignment/validated_consensus/` |
 | Prefix replay, natural | `analysis_outputs/prefix_resample/smoke_runs/` |
 | Nudge pilot | `analysis_outputs/prefix_resample/nudge_pilot/` |
 | Broken evaluators | `analysis_outputs/prefix_resample/single_action/` |

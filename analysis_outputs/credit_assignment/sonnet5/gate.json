@@ -70,5 +70,7 @@
   "labels_path": "analysis_outputs/credit_assignment/sonnet5/proposed_labels.jsonl",
   "trajectories_path": "analysis_outputs/real_rollout_sft/trajectories.jsonl",
   "n_assignments": 70,
-  "n_loaded_trajectories": 70
+  "n_loaded_trajectories": 70,
+  "study_status": "contaminated",
+  "study_status_reason": "Contaminated study. All 35 unsafe examples came from absence graders whose target was never staged. Do not compare this file to a validated-outcome run."
 }

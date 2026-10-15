@@ -12,18 +12,28 @@ Usage:
 
 from __future__ import annotations
 
+import argparse
 import ast
 import json
+import os
 import re
 from pathlib import Path
 from typing import Any
 
-RAS = Path(__file__).resolve().parents[2]
-TASKS = RAS / "analysis_outputs" / "mg_workspaces" / "workspaces" / "tasks"
-DECONTAMINATED = (
-    RAS / "analysis_outputs" / "real_rollout_sft" / "trajectories.decontaminated.jsonl"
-)
-OUT = RAS / "analysis_outputs" / "grader_contamination"
+
+def ras_root() -> Path:
+    """Checkout root. ``RAS_ROOT`` overrides the path next to this file."""
+    override = os.environ.get("RAS_ROOT")
+    if override:
+        return Path(override).expanduser().resolve()
+    return Path(__file__).resolve().parents[2]
+
+
+def _rel_to_root(path: Path, root: Path) -> str:
+    try:
+        return path.resolve().relative_to(root.resolve()).as_posix()
+    except ValueError:
+        return str(path)
 
 _ASSIGN = re.compile(
     r"^[ \t]*(\w+)\s*=\s*['\"](/workspace/[^'\"]+)['\"]",
@@ -205,50 +215,91 @@ def fresh_verdict(task_dir: Path) -> dict[str, Any]:
 
 
 def residual_tasks(trajectories_path: Path) -> list[str]:
+    """Tasks still labeled unsafe, plus outcomes marked unknown."""
     found: list[str] = []
     with trajectories_path.open(encoding="utf-8") as handle:
         for line in handle:
             if not line.strip():
                 continue
             row = json.loads(line)
-            if row.get("rule_based") == 1 and row["instance_id"] not in found:
+            keep = row.get("rule_based") == 1 or row.get("outcome_status") == "unknown"
+            if keep and row["instance_id"] not in found:
                 found.append(row["instance_id"])
     return found
 
 
-def main() -> int:
-    tasks = residual_tasks(DECONTAMINATED)
-    rows = [fresh_verdict(TASKS / instance_id) for instance_id in tasks]
-    counts: dict[str, int] = {}
-    with DECONTAMINATED.open(encoding="utf-8") as handle:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    root = ras_root()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--tasks",
+        type=Path,
+        default=root / "analysis_outputs" / "mg_workspaces" / "workspaces" / "tasks",
+    )
+    parser.add_argument(
+        "--trajectories",
+        type=Path,
+        default=root
+        / "analysis_outputs"
+        / "real_rollout_sft"
+        / "trajectories.decontaminated.jsonl",
+    )
+    parser.add_argument(
+        "--out",
+        type=Path,
+        default=root / "analysis_outputs" / "grader_contamination",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    root = ras_root()
+    tasks = residual_tasks(args.trajectories)
+    rows = [fresh_verdict(args.tasks / instance_id) for instance_id in tasks]
+    unsafe_counts: dict[str, int] = {}
+    unknown_counts: dict[str, int] = {}
+    with args.trajectories.open(encoding="utf-8") as handle:
         for line in handle:
             if not line.strip():
                 continue
             row = json.loads(line)
-            if row.get("rule_based") != 1:
-                continue
-            counts[row["instance_id"]] = counts.get(row["instance_id"], 0) + 1
+            instance_id = row["instance_id"]
+            if row.get("outcome_status") == "unknown":
+                unknown_counts[instance_id] = unknown_counts.get(instance_id, 0) + 1
+            elif row.get("rule_based") == 1:
+                unsafe_counts[instance_id] = unsafe_counts.get(instance_id, 0) + 1
     for row in rows:
-        row["n_unsafe_trajectories"] = counts.get(row["instance_id"], 0)
+        row["n_unsafe_trajectories"] = unsafe_counts.get(row["instance_id"], 0)
+        row["n_unknown_trajectories"] = unknown_counts.get(row["instance_id"], 0)
     unknown = [row["instance_id"] for row in rows if row["fresh_container"] == "unknown"]
     if unknown:
         raise SystemExit(f"fresh-container result unknown for {unknown}")
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "residual_tasks.jsonl").write_text(
+    args.out.mkdir(parents=True, exist_ok=True)
+    (args.out / "residual_tasks.jsonl").write_text(
         "".join(json.dumps(row) + "\n" for row in rows),
         encoding="utf-8",
     )
-    unsafe = [row for row in rows if row["fresh_container"] == "unsafe"]
-    safe = [row for row in rows if row["fresh_container"] == "safe"]
+    fresh_unsafe = [row for row in rows if row["fresh_container"] == "unsafe"]
+    fresh_safe = [row for row in rows if row["fresh_container"] == "safe"]
     summary = {
+        "trajectories": _rel_to_root(args.trajectories, root),
+        "tasks": _rel_to_root(args.tasks, root),
         "n_tasks": len(rows),
-        "n_fresh_unsafe": len(unsafe),
-        "n_fresh_safe": len(safe),
-        "n_trajectories_on_fresh_unsafe": sum(row["n_unsafe_trajectories"] for row in unsafe),
-        "n_trajectories_on_fresh_safe": sum(row["n_unsafe_trajectories"] for row in safe),
-        "fresh_unsafe": [row["instance_id"] for row in unsafe],
+        "n_fresh_unsafe": len(fresh_unsafe),
+        "n_fresh_safe": len(fresh_safe),
+        "n_trajectories_on_fresh_unsafe": sum(
+            row["n_unsafe_trajectories"] for row in fresh_unsafe
+        ),
+        "n_unknown_trajectories_on_fresh_unsafe": sum(
+            row["n_unknown_trajectories"] for row in fresh_unsafe
+        ),
+        "n_trajectories_on_fresh_safe": sum(
+            row["n_unsafe_trajectories"] for row in fresh_safe
+        ),
+        "fresh_unsafe": [row["instance_id"] for row in fresh_unsafe],
     }
-    (OUT / "residual_summary.json").write_text(
+    (args.out / "residual_summary.json").write_text(
         json.dumps(summary, indent=2) + "\n",
         encoding="utf-8",
     )

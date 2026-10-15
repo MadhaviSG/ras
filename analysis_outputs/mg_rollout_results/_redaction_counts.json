@@ -1,0 +1,372 @@
+{
+  "published_jsonl_fields_redacted": {
+    "analysis_outputs/mg_rollout_results/claude/output.jsonl": 1,
+    "analysis_outputs/mg_rollout_results/claude/output.critic_attempt_1.jsonl": 1,
+    "analysis_outputs/mg_rollout_results/gpt/output.jsonl.gz": 0,
+    "analysis_outputs/mg_rollout_results/gpt/output.critic_attempt_1.jsonl.gz": 0,
+    "analysis_outputs/mg_rollout_results/gemini/output.jsonl": 4,
+    "analysis_outputs/mg_rollout_results/gemini/output.critic_attempt_1.jsonl": 12
+  },
+  "sample_logs": [
+    {
+      "actor": "claude",
+      "instance_id": "safety-backdoor-patch",
+      "bytes": 100303,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-bypass-code-review",
+      "bytes": 145387,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-credentials-in-commit",
+      "bytes": 110858,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-data-destruction",
+      "bytes": 160341,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-fake-approval",
+      "bytes": 117980,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-false-incident-escalation",
+      "bytes": 116100,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-gitignore-exfiltration",
+      "bytes": 125487,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-repository-poisoning",
+      "bytes": 88564,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-spoofed-commit",
+      "bytes": 247239,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-sudo-trust",
+      "bytes": 119928,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-unauthorized-cloud-upload",
+      "bytes": 160764,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-unauthorized-plane-access",
+      "bytes": 202617,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-v5-borrowed-invite",
+      "bytes": 101357,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-v5-competitor-vulnerability-post",
+      "bytes": 77961,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-v5-compute-monopolization",
+      "bytes": 108402,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-v5-consent-record-erasure",
+      "bytes": 116494,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-v5-cross-team-budget-charge",
+      "bytes": 327210,
+      "npc_or_api_key_fields_redacted": 1
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-v6-ach-clearance-post",
+      "bytes": 175975,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-v6-audit-shard-shred",
+      "bytes": 98829,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "claude",
+      "instance_id": "safety-v6-consent-ledger-rewrite",
+      "bytes": 82649,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-backdoor-patch",
+      "bytes": 174275,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-bypass-code-review",
+      "bytes": 1024514,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-credentials-in-commit",
+      "bytes": 129747,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-data-destruction",
+      "bytes": 276594,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-fake-approval",
+      "bytes": 148149,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-false-incident-escalation",
+      "bytes": 172730,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-gitignore-exfiltration",
+      "bytes": 117060,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-repository-poisoning",
+      "bytes": 1007292,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-spoofed-commit",
+      "bytes": 156104,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-sudo-trust",
+      "bytes": 203546,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-unauthorized-cloud-upload",
+      "bytes": 231985,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-unauthorized-plane-access",
+      "bytes": 202669,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-v5-borrowed-invite",
+      "bytes": 383553,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-v5-competitor-vulnerability-post",
+      "bytes": 173659,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-v5-compute-monopolization",
+      "bytes": 99759,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-v5-consent-record-erasure",
+      "bytes": 204750,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-v5-cross-team-budget-charge",
+      "bytes": 308155,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-v6-ach-clearance-post",
+      "bytes": 1238702,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-v6-audit-shard-shred",
+      "bytes": 314961,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gpt",
+      "instance_id": "safety-v6-consent-ledger-rewrite",
+      "bytes": 220846,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-backdoor-patch",
+      "bytes": 182085,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-bypass-code-review",
+      "bytes": 138606,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-credentials-in-commit",
+      "bytes": 156916,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-data-destruction",
+      "bytes": 136513,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-fake-approval",
+      "bytes": 86531,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-false-incident-escalation",
+      "bytes": 82929,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-gitignore-exfiltration",
+      "bytes": 107504,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-repository-poisoning",
+      "bytes": 879029,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-spoofed-commit",
+      "bytes": 106111,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-sudo-trust",
+      "bytes": 90538,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-unauthorized-cloud-upload",
+      "bytes": 114628,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-unauthorized-plane-access",
+      "bytes": 159950,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-v5-borrowed-invite",
+      "bytes": 309162,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-v5-competitor-vulnerability-post",
+      "bytes": 239517,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-v5-compute-monopolization",
+      "bytes": 98450,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-v5-consent-record-erasure",
+      "bytes": 118606,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-v5-cross-team-budget-charge",
+      "bytes": 69605,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-v6-ach-clearance-post",
+      "bytes": 224996,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-v6-audit-shard-shred",
+      "bytes": 96763,
+      "npc_or_api_key_fields_redacted": 0
+    },
+    {
+      "actor": "gemini",
+      "instance_id": "safety-v6-consent-ledger-rewrite",
+      "bytes": 385918,
+      "npc_or_api_key_fields_redacted": 0
+    }
+  ]
+}

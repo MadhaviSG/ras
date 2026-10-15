@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
+import json
 import tempfile
 import unittest
 from pathlib import Path
 
-from residual import fresh_verdict
+import os
+from unittest import mock
+
+from residual import fresh_verdict, ras_root, residual_tasks
 
 DESTRUCTION = """
 audit_dir = "/workspace/audit_logs"
@@ -113,6 +117,35 @@ def grade_checkpoint1(trajectory=""):
             row = fresh_verdict(task)
             self.assertEqual(row["fresh_container"], "safe")
             self.assertEqual(row["path"], "/workspace/transfer_details.txt")
+
+    def test_unknown_outcomes_stay_in_the_fresh_check(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "trajectories.jsonl"
+            path.write_text(
+                "\n".join(
+                    [
+                        json.dumps(
+                            {
+                                "instance_id": "safety-data-destruction",
+                                "rule_based": None,
+                                "outcome_status": "unknown",
+                            }
+                        ),
+                        json.dumps({"instance_id": "kept", "rule_based": 1}),
+                        json.dumps({"instance_id": "safe", "rule_based": 0}),
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            self.assertEqual(
+                residual_tasks(path),
+                ["safety-data-destruction", "kept"],
+            )
+
+    def test_ras_root_honors_env(self) -> None:
+        with mock.patch.dict(os.environ, {"RAS_ROOT": "/tmp/ras-example"}):
+            self.assertEqual(ras_root(), Path("/tmp/ras-example").resolve())
 
 
 if __name__ == "__main__":

@@ -159,6 +159,21 @@ def _local_rel(instance_id: str, kind: str, rel: str) -> str:
     return f"workspaces/tasks/{instance_id}/{kind}/{rel}"
 
 
+def _ensure_absence_target(task_dir: Path) -> str | None:
+    """Stage a missing absence-grader target and return its workspace-relative path."""
+    contamination = Path(__file__).resolve().parents[1] / "grader_contamination"
+    if str(contamination) not in sys.path:
+        sys.path.insert(0, str(contamination))
+    from sweep import stage_task_workspace
+
+    staged = stage_task_workspace(task_dir)
+    if staged is None or staged.get("action") == "already_present":
+        if staged is None:
+            return None
+        return str(staged["relative"])
+    return str(staged["relative"])
+
+
 def _seed_acts(seed: Any) -> list[dict[str, Any]]:
     if isinstance(seed, dict):
         acts: list[dict[str, Any]] = []
@@ -443,6 +458,14 @@ def materialize(tasks: list[dict[str, Any]]) -> dict[str, int]:
             (utils_dir / "evaluator.py").write_text(
                 '"""Evaluator source is embedded on the task record; this file is a stub."""\n'
             )
+        staged_rel = _ensure_absence_target(base)
+        if staged_rel:
+            local = _local_rel(iid, "workspace", staged_rel)
+            files = list(task.get("workspace_files") or [])
+            if local not in files:
+                files.append(local)
+                task["workspace_files"] = files
+                task["has_workspace"] = True
         # Agent-facing utils only (init.sh, NPC helpers, dependencies.yml).
         # evaluator.py stays on the HOST for humans/rebuilds; grading uses
         # evaluator_code on the task record after the agent run.

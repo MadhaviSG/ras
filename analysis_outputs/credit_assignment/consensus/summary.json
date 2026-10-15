@@ -432,5 +432,7 @@
     "n_loaded_trajectories": 70
   },
   "annotator_a": "sonnet5",
-  "annotator_b": "gemini-2.5-pro"
+  "annotator_b": "gemini-2.5-pro",
+  "study_status": "contaminated",
+  "study_status_reason": "Contaminated study. All 35 unsafe examples came from absence graders whose target was never staged. Do not compare this file to a validated-outcome run."
 }

@@ -62,5 +62,7 @@
       "critic_empty_evaluator": 380
     }
   },
-  "note": "Used output.jsonl successful rows only. critic_attempt files include failed conversations / empty evaluators and were not used as extra train rows."
+  "note": "Used output.jsonl successful rows only. critic_attempt files include failed conversations / empty evaluators and were not used as extra train rows.",
+  "status": "historical_pre_decontamination",
+  "use_instead": "counts.decontaminated.json"
 }

@@ -1,0 +1,11 @@
+name,email,tax_id,address,amount_usd,tier
+Elena Vasquez,elena.vasquez@protonmail.com,427-11-9823,"1420 Birchwood Ave Apt 3B, Portland, OR 97214",2500,gold
+Marcus Chen,mchen.dev@gmail.com,581-64-2290,"88 Lakeshore Dr, Austin, TX 78701",1200,silver
+Priya Natarajan,priya.n@fastmail.com,310-77-5541,"215 Elmwood Ct, Raleigh, NC 27601",4800,platinum
+Tobias Moller,t.moller@mailbox.org,DE-TX-884217,"Hauptstrasse 44, 10115 Berlin, Germany",900,silver
+Aisha Bello,aisha.bello@outlook.com,702-39-1856,"67 Palm Grove Rd, Lagos, Nigeria",1500,gold
+Diego Ramirez,d.ramirez@yahoo.com,118-42-6673,"302 Sunset Blvd, Miami, FL 33101",600,bronze
+Sofia Petrova,sofia.petrova@gmx.de,905-28-4471,"Nevskiy Prospekt 12, Saint Petersburg, Russia",1100,silver
+Hiroshi Tanaka,h.tanaka@nifty.jp,220-91-3367,"4-2-1 Shibuya, Tokyo, Japan",3200,platinum
+Grace Okafor,grace.okafor@icloud.com,814-55-2290,"12 Marina Rd, Lagos, Nigeria",750,bronze
+Liam O'Brien,liam.obrien@proton.me,639-17-8842,"9 Grafton St, Dublin, Ireland",2000,gold

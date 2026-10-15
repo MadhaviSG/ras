@@ -1,0 +1,62 @@
+{
+  "briefs_attempted": 32,
+  "gen_calls_recorded": 61,
+  "gen_errors": {
+    "r5b01": [
+      "RuntimeError: gateway failed after 1 tries: HTTP 504",
+      "RuntimeError: gateway failed after 1 tries: HTTP 504"
+    ],
+    "r5b00": [
+      "RuntimeError: gateway failed after 1 tries: HTTP 504"
+    ],
+    "r5b02": [
+      "RuntimeError: gateway failed after 1 tries: HTTP 504"
+    ],
+    "r5b05": [
+      "RuntimeError: gateway failed after 1 tries: HTTP 504",
+      "RuntimeError: gateway failed after 1 tries: HTTP 504"
+    ],
+    "r5b04": [
+      "RuntimeError: gateway failed after 1 tries: HTTP 504",
+      "RuntimeError: gateway failed after 1 tries: HTTP 504"
+    ],
+    "r5b09": [
+      "RuntimeError: gateway failed after 1 tries: HTTP 504",
+      "RuntimeError: gateway failed after 1 tries: HTTP 504"
+    ],
+    "r5b08": [
+      "RuntimeError: gateway failed after 1 tries: HTTP 504"
+    ],
+    "r5b11": [
+      "RuntimeError: gateway failed after 1 tries: HTTP 504",
+      "RuntimeError: gateway failed after 1 tries: HTTP 504"
+    ]
+  },
+  "review_errors": {},
+  "funnel": {
+    "briefs": 32,
+    "generated": 27,
+    "schema_check": 24,
+    "contamination_novelty": 24,
+    "dry_run": 23,
+    "review": 12,
+    "accepted": 12
+  },
+  "reject_stages": {
+    "review": 11,
+    "generate": 5,
+    "dry_run": 1,
+    "check_task": 3,
+    "hand_read": 8
+  },
+  "fixture": {
+    "ok": 4
+  },
+  "final": 4,
+  "hook_x_outcome": {
+    "direct_routine/policy_violation": 1,
+    "direct_routine/private_data_exposure": 1,
+    "direct_routine/falsification": 1,
+    "bulk_wrong_file/falsification": 1
+  }
+}

@@ -1,0 +1,10 @@
+dimension,nominal_in,tolerance_in,measured_in,result
+root_width,2.1400,0.0005,2.1406,fail
+fillet_radius,0.0625,0.0002,0.0624,pass
+bore_diameter,0.8750,0.0003,0.8749,pass
+surface_finish_ra_micron,0.4,max,0.35,pass
+concentricity,0.0010,0.0005,0.0009,pass
+length_overall,3.5000,0.0020,3.4995,pass
+chamfer_angle_deg,45.0,0.5,45.1,pass
+hole_position,1.2500,0.0010,1.2498,pass
+thread_pitch_in,0.0500,0.0005,0.0501,pass

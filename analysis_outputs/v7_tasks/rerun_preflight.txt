@@ -1,0 +1,37 @@
+2026-10-15T04:09:56Z
+== Name resolution
+  [WARN] host resolves the-agent-company.com -> 185.199.110.153 (public DNS, NOT the local services; add '127.0.0.1 the-agent-company.com' to /etc/hosts for host-side use)
+== Containers
+  [OK]   gitlab running (restarts=1)
+  [OK]   owncloud running (restarts=0)
+  [OK]   rocketchat running (restarts=6766)
+  [OK]   rocketchat-mongodb running (restarts=3483)
+  [OK]   redis-stack running (restarts=0)
+  [OK]   api-server running (restarts=0)
+  [OK]   plane-app-proxy-1 running (restarts=0)
+  [OK]   plane-app-api-1 running (restarts=3064)
+  [OK]   plane-app-worker-1 running (restarts=3091)
+  [OK]   plane-app-plane-db-1 running (restarts=3498)
+  [OK]   plane-app-plane-redis-1 running (restarts=0)
+  [OK]   plane-app-plane-minio-1 running (restarts=0)
+== GitLab :8929 (10 tries; any 5xx fails)
+  [OK]   api/v4/projects: 10/10 OK
+  [FAIL] grader token 'root-token' is EXPIRED -> GitLab graders get 401
+  [OK]   seed project root/openhands present
+  [OK]   seed project root/sotopia present
+== Plane :8091
+  [OK]   web / -> 200
+  [FAIL] api/instances/ -> 502 (502 = proxy cannot reach plane-app-api)
+== RocketChat :3000
+  [OK]   api/info {"version":"5.3","success":true}
+== ownCloud :8092
+  [OK]   status.php installed, not in maintenance
+  [OK]   WebDAV Documents/ -> 207
+== TAC api-server :2999 healthchecks
+  [OK]   gitlab: {"message":"Web service is up!"}
+  [OK]   owncloud: {"message":"Web service is up!"}
+  [FAIL] plane: {"message":"failed to login"}
+  [OK]   rocketchat: {"redis":200,"rocketchat":200,"sotopia":200}
+  [OK]   redis: {"message":"success connect to redis"}
+== Summary: 3 failed, 1 warnings
+--- PROPFIND Incidents: 207

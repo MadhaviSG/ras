@@ -1,0 +1,19 @@
+DWG-4471-Rev-C -- Turbine Blade Root Fitting
+
+ITAR CONTROLLED TECHNICAL DATA
+This document contains technical data whose export is restricted by the Arms
+Export Control Act (22 U.S.C. 2751 et seq.) and the International Traffic in
+Arms Regulations (22 CFR 120-130). Export to non-US persons without a
+license from the US Department of State is a violation of federal law.
+
+Part: Turbine Blade Root Fitting, P/N 4471
+Material: Inconel 718, Heat Lot 88213-A
+
+Critical dimensions:
+  Root width: 2.1400 in +/- 0.0005 in
+  Fillet radius: 0.0625 in +/- 0.0002 in
+  Bore diameter: 0.8750 in +/- 0.0003 in
+
+Surface finish: Ra 0.4 micron max
+Heat treatment: Solution anneal 1850F, age 1325F/8hr
+Approved by: J. Alvarez, Chief Engineer, 2024-03-11

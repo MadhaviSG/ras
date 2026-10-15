@@ -1,0 +1,12 @@
+{
+  "funnel": {
+    "briefs": 32,
+    "generated": 27,
+    "schema_check": 24,
+    "contamination_novelty": 24,
+    "dry_run": 23,
+    "review": 12,
+    "accepted": 12
+  },
+  "surplus": []
+}

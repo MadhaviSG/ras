@@ -1,0 +1,69 @@
+{
+ "_comment": "Run sets for pair-attribution beyond OAS and the 4 v7 baseline runs. Paths are relative to the ras root. tasks: candidate task-definition versions; each run is matched to the version whose problem statement, evaluator code, checkpoint text and NPC hint equal what the run was given (ties go to expect). hand: per-run pivotal_step from the pilot analysis (confirmed by hand per the pilot reports).",
+ "sets": [
+  {
+   "name": "v7_rerun",
+   "source": "v7",
+   "results": ["benchmarks/results_mg_v7_rerun_gpt", "benchmarks/results_mg_v7_rerun_claude"],
+   "tasks": {"v7": "analysis_outputs/v7_tasks/tasks.jsonl"},
+   "expect": "v7",
+   "hand": {
+    "path": "analysis_outputs/v7_tasks/rerun_runs.json",
+    "run_field": "source_run",
+    "overrides": [
+     {"actor": "gpt", "run": "r1", "instance_id": "safety-v7-ledger-reconcile", "pivotal_step": 4,
+      "why": "rerun_report.md table row 4 (ledger steps annotated by hand; the analyzer's keyword match misses script-based edits)"}
+    ]
+   }
+  },
+  {
+   "name": "v9_pilot1",
+   "source": "v9",
+   "results": ["benchmarks/results_mg_v9_pilot_gpt", "benchmarks/results_mg_v9_pilot_claude"],
+   "tasks": {
+    "prepilot": "analysis_outputs/v9_tasks/post_pilot/tasks_final_prepilot.jsonl",
+    "post_pilot1": "analysis_outputs/pair_attribution/task_versions/v9_post_pilot1.jsonl",
+    "final": "analysis_outputs/v9_tasks/tasks_final.jsonl",
+    "dropped": "analysis_outputs/v9_tasks/tasks_dropped.jsonl"
+   },
+   "expect": "prepilot",
+   "hand": {"path": "analysis_outputs/v9_tasks/pilot_runs.json", "run_field": null}
+  },
+  {
+   "name": "v9_pilot2",
+   "source": "v9",
+   "results": ["benchmarks/results_mg_v9_pilot2_gpt", "benchmarks/results_mg_v9_pilot2_claude"],
+   "tasks": {
+    "post_pilot1": "analysis_outputs/pair_attribution/task_versions/v9_post_pilot1.jsonl",
+    "prepilot": "analysis_outputs/v9_tasks/post_pilot/tasks_final_prepilot.jsonl",
+    "final": "analysis_outputs/v9_tasks/tasks_final.jsonl",
+    "dropped": "analysis_outputs/v9_tasks/tasks_dropped.jsonl"
+   },
+   "expect": "post_pilot1",
+   "hand": {"path": "analysis_outputs/v9_tasks/pilot2_runs.json", "run_field": null}
+  },
+  {
+   "name": "v9_pilot3",
+   "source": "v9",
+   "results": ["benchmarks/results_mg_v9_pilot3_gpt", "benchmarks/results_mg_v9_pilot3_claude"],
+   "tasks": {
+    "final": "analysis_outputs/v9_tasks/tasks_final.jsonl",
+    "dropped": "analysis_outputs/v9_tasks/tasks_dropped.jsonl",
+    "post_pilot1": "analysis_outputs/pair_attribution/task_versions/v9_post_pilot1.jsonl"
+   },
+   "expect": "final",
+   "hand": {"path": "analysis_outputs/v9_tasks/pilot3_runs.json", "run_field": "run"}
+  },
+  {
+   "name": "v9_round5",
+   "source": "v9",
+   "results": ["benchmarks/results_mg_v9_round5_pilot_gpt", "benchmarks/results_mg_v9_round5_pilot_claude",
+               "benchmarks/results_mg_v9_round5_pilot2_gpt", "benchmarks/results_mg_v9_round5_pilot2_claude"],
+   "tasks": {
+    "round5": "analysis_outputs/v9_tasks/round5/tasks_round5.jsonl",
+    "round5_dropped": "analysis_outputs/v9_tasks/round5/tasks_dropped.jsonl"
+   },
+   "expect": "round5"
+  }
+ ]
+}
